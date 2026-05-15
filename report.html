@@ -1,11 +1,1868 @@
-<!doctype html>
-<html lang="pt-PT">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-  <meta charset="utf-8">
-  <title>Relatório ainda não disponível!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Portal das Bolsas de Estudo de Câmara de Lobos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: white; padding: 8px; z-index: 100; transition: top 0.3s ease; }
+    .skip-link:focus { top: 0; }
+    .visually-hidden-focusable:not(:focus):not(:focus-within) { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    body { 
+      background-color: #ffffff; 
+      padding-top: 2rem; 
+      padding-bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container { 
+      max-width: 900px;
+      width: 100%;
+      background-color: transparent; 
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .report-footer {
+      width: 100%;
+      align-self: stretch;
+      background-color: #ffffff;
+      color: #4a5568;
+      text-align: center;
+      padding: 1.25rem 1rem;
+      font-size: 0.8rem;
+      border-top: 1px solid #e0e0e0;
+      margin-top: auto;
+    }
+    .report-footer p { margin: 0.2rem 0; }
+    h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    .status-ok { color: #ffffff; background-color: #0E8A16; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-nok { color: #ffffff; background-color: #B60205; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-melhoria { color: #856404; background-color: #fff3cd; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .status-na { color: #000; background-color: #C2E0C6; padding: 0.25rem 0.5rem; border-radius: 50px; font-weight: 500; display: inline-block; }
+    .requirement-title { margin-top: 2rem; }
+    .requirement-title h4, .requirement-title h3 { color: #000; }
+    .mb-4 ul li a { color: #1e3a8a; text-decoration: none; }
+    .mb-4 ul li a:hover { color: #1e40af; text-decoration: underline; }
+    summary.index-summary { display: list-item; font-weight: 700; font-size: 1.25rem !important; color: #000; cursor: pointer; }
+    summary.index-summary:focus { outline: 3px solid #333399; outline-offset: 2px; }
+    .evidence-list { list-style-type: disc; padding-left: 1.5rem; margin: 1rem 0; }
+    .evidence-item { margin: 0.5rem 0; padding: 0.5rem 0.5rem 0.5rem 1.5rem; border-radius: 4px; background-color: #f6f6f6; color: #000; list-style: none; margin-left: -1.5rem; }
+    .evidence-item p { margin: 1.5rem 0 1rem 0; }
+    .evidence-labels { font-size: 0.85em; display: inline-flex; flex-wrap: wrap; gap: 0.25rem; }
+    .label-tag { padding: 0.125rem 0.375rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 500; color: white; display: inline-block; margin-right: 0.25rem; }
+    .label-checklist { background-color: #5319E7; }
+    .label-auto { background-color: #5319E7; }
+    .label-declaracao { background-color: #5319E7; }
+    .label-outras { background-color: #5319E7; }
+    .label-melhoria { background-color: #FBCA04; color: #000; }
+    .label-na { background-color: #C2E0C6; color: #000; }
+    .label-ok { background-color: #0E8A16; }
+    .label-nok { background-color: #B60205; }
+    .label-requisito { background-color: #0052CC; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .report-section { border-bottom: 3px solid #000000; padding-bottom: 2rem; margin-bottom: 2rem; }
+    .report-section:last-of-type { border-bottom: none; }
+    .checklist-section { border-bottom: 3px solid #000000; padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .avaliacao-manual-section { padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+    .checklist-section:last-of-type { border-bottom: none; }
+    .issue-link { color: #1e3a8a; text-decoration: none; }
+    .issue-link:hover { text-decoration: underline; color: #1e40af; }
+    table.table caption { caption-side: top; text-align: left; padding-bottom: 0.5rem; font-weight: 600; color: #000; }
+  </style>
 </head>
 <body>
-  <h1>Opps! O relatório ainda não está disponível!</h1>
-  <p>Peça à equipa da <abbr title="Agência para a Reforma Tecnológica do Estado">ARTE</abbr> para adicionar o relatório.</p>
+  <a href="#conteudo-principal" class="skip-link visually-hidden-focusable">Saltar para o conteúdo principal</a>
+  <div class="container mt-4" id="conteudo-principal">
+    <header class="mb-4">
+        <h1>Relatório Avaliação de Candidatura<br><em style="font-size:70%">Portal das Bolsas de Estudo de Câmara de Lobos</em></h1>
+    </header>
+
+    <section class="mb-4">
+      <ul>
+        <li>Avaliação feita por: ARTE. I.P. - Núcleo de Experiência e Usabilidade</li>
+        <li>Data de criação: 15/05/2026</li>
+        <li>Última atualização: 15/05/2026</li>
+        <li>URL: <a href="https://bolsadeestudo.cm-camaradelobos.pt" target="_blank" rel="noopener noreferrer">https://bolsadeestudo.cm-camaradelobos.pt</a></li>
+        <li>Propriedade: Câmara Municipal de Câmara de Lobos</li>
+        <li>Candidatura: Prata</li>
+        <li>Progresso (% de requisitos auditados): 100%</li>
+      </ul>
+    </section>
+
+    <nav class="mb-4 report-section" aria-label="Índice">
+      <details open>
+        <summary class="index-summary">Índice</summary>
+        <ul>
+          <li><a href="#introducao">Introdução</a></li>
+          
+          <li><a href="#avaliacao-automatica">Avaliação automática</a></li>
+          
+          <li><a href="#avaliacao-manual">Avaliação manual</a>
+            <ul class="indent-list">
+              
+              <li><a href="#checklist-10-aspetos">Checklist 10 aspetos</a>
+                <ul class="indent-list">
+                  <li><a href="#req-chk10-r-1.1">Requisito 1.1 - O menu de navegação deve estar estruturado como uma lista de opções</a></li><li><a href="#req-chk10-r-1.2">Requisito 1.2 - É possível selecionar as opções e as subopções do menu quer com rato quer com teclado</a></li><li><a href="#req-chk10-r-1.3">Requisito 1.3 - As imagens-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto</a></li><li><a href="#req-chk10-r-2.1">Requisito 2.1 - Existe um título h1 marcado na página</a></li><li><a href="#req-chk10-r-2.2">Requisito 2.2 - Existe uma marcação hierarquizada de títulos e subtítulos na página (h1...h6)</a></li><li><a href="#req-chk10-r-3.1">Requisito 3.1 - As células que constituem os cabeçalhos da tabela estão marcadas com o elemento th</a></li><li><a href="#req-chk10-r-3.2">Requisito 3.2 - A legenda da tabela está marcada com o elemento caption</a></li><li><a href="#req-chk10-r-4.2">Requisito 4.2 - É possível identificar os campos de preenchimento obrigatório quando se usa apenas um leitor de ecrã</a></li><li><a href="#req-chk10-r-5.1">Requisito 5.1 - A imagem ou gráfico tem um equivalente alternativo em texto curto e correto</a></li><li><a href="#req-chk10-r-5.2">Requisito 5.2 - O gráfico é acompanhado de uma descrição longa</a></li><li><a href="#req-chk10-r-5.3">Requisito 5.3 - As imagens-link têm um equivalente alternativo correto</a></li><li><a href="#req-chk10-r-6.1">Requisito 6.1 - No corpo de um documento, o rácio de contraste entre a cor do texto normal (menor que 18 pontos ou menor que 14 pontos negrito) e a cor do fundo é superior a 4,5:1</a></li><li><a href="#req-chk10-r-7.1">Requisito 7.1 - Deve ser possível ativar os botões de controlo do leitor quer com o rato quer com o teclado</a></li><li><a href="#req-chk10-r-7.2">Requisito 7.2 - O vídeo ou o áudio deve conter preferencialmente legendas fechadas sincronizadas. Caso não seja possível, no mínimo, deve disponibilizar-se uma transcrição textual</a></li><li><a href="#req-chk10-r-8.2">Requisito 8.2 - Quando se retira a CSS, a informação aparece numa ordem lógica</a></li><li><a href="#req-chk10-r-8.3">Requisito 8.3 - Quando se retira a CSS, deve ser possível reconhecer a semântica dos diversos elementos</a></li><li><a href="#req-chk10-r-9.4">Requisito 9.4 - Quando a caixa de diálogo fecha, o foco (cursor do Browser) deve voltar ao elemento interativo que a invocou</a></li><li><a href="#req-chk10-r-10.1">Requisito 10.1 - Nos ficheiros PDF é possível, no mínimo, extrair o conteúdo textual para formato TXT</a></li>
+                </ul>
+              </li>
+              
+              <li><a href="#checklist-conteudo">Checklist Conteúdo</a>
+                <ul class="indent-list">
+                  <li><a href="#req-conteudo-r-1.2">Requisito 1.2 - Os termos mais complexos têm uma definição agregada</a></li><li><a href="#req-conteudo-r-1.3">Requisito 1.3 - Cada bloco de conteúdo contém a sua data de atualização</a></li><li><a href="#req-conteudo-r-2.1">Requisito 2.1 - O tipo de letra do corpo do documento é adequado e o tamanho da letra é, no mínimo, de 12 pontos</a></li><li><a href="#req-conteudo-r-2.3">Requisito 2.3 - Blocos e linhas de texto com largura não superior a 100 caracteres</a></li><li><a href="#req-conteudo-r-2.4">Requisito 2.4 - O espaçamento entre linhas não é inferior a 1.5x o tamanho da letra</a></li><li><a href="#req-conteudo-r-3.3">Requisito 3.3 - As hiperligações de texto não devem ser diferenciadas apenas com base na cor</a></li><li><a href="#req-conteudo-r-4.1">Requisito 4.1 - Os documentos longos têm um índice no topo com hiperligações internas para o mesmo</a></li><li><a href="#req-conteudo-r-4.2">Requisito 4.2 - O layout do sítio Web é adaptável a plataformas móveis sem necessidade de efetuar varrimento horizontal</a></li><li><a href="#req-conteudo-r-5.1">Requisito 5.1 - Não existem elementos interativos acionados apenas com a passagem do rato (hover)</a></li><li><a href="#req-conteudo-r-5.2">Requisito 5.2 - Os elementos interativos têm uma dimensão mínima de 44px CSS (44 pontos) (vertical e horizontal)</a></li><li><a href="#req-conteudo-r-5.3">Requisito 5.3 - Há apenas um botão de ação principal por página e o mesmo encontra-se destacado</a></li><li><a href="#req-conteudo-r-5.4">Requisito 5.4 - Elementos gráficos interativos têm de aparentar ser clicáveis</a></li>
+                </ul>
+              </li>
+              
+              <li><a href="#checklist-transacao">Checklist Transação</a>
+                <ul class="indent-list">
+                  <li><a href="#req-transacao-r-1.1">Requisito 1.1 - A sequência de tabulação entre campos segue a sequência de preenchimento</a></li><li><a href="#req-transacao-r-1.2">Requisito 1.2 - Os formulários com mais de 2 ecrãs de altura devem ser distribuídos por várias páginas</a></li><li><a href="#req-transacao-r-1.3">Requisito 1.3 - Os formulários com mais de uma página têm a sequência de passos ilustrada</a></li><li><a href="#req-transacao-r-2.1">Requisito 2.1 - O tamanho dos campos deve refletir o tamanho previsível dos dados</a></li><li><a href="#req-transacao-r-2.2">Requisito 2.2 - É usada revelação progressiva em vez de campos inativos</a></li><li><a href="#req-transacao-r-2.4">Requisito 2.4 - Campos obrigatórios devem ser claramente indicados como tal</a></li><li><a href="#req-transacao-r-3.1">Requisito 3.1 - Em ações longas, o sistema deve indicar o que está a acontecer</a></li><li><a href="#req-transacao-r-3.2">Requisito 3.2 - Deve ser confirmado o sucesso da transação/envio de informação</a></li><li><a href="#req-transacao-r-4.2">Requisito 4.2 - As ações destrutivas nunca devem ser permanentes; deve ser sempre possível desfazer a operação</a></li><li><a href="#req-transacao-r-4.4">Requisito 4.4 - As mensagens de erro devem mostrar os passos concretos para a resolução dos mesmos</a></li>
+                </ul>
+              </li>
+              <li><a href="#outras-violacoes">Outras violações</a></li>
+            </ul>
+          </li>
+          
+          <li><a href="#etiquetas">Significado das etiquetas utilizadas</a></li>
+        </ul>
+      </details>
+    </nav>
+
+    <section id="introducao" class="mb-5 report-section">
+      <h2>Introdução</h2>
+      <p>O website <a href="https://bolsadeestudo.cm-camaradelobos.pt" target="_blank">https://bolsadeestudo.cm-camaradelobos.pt</a> <strong><span class="status-nok"><span class="sr-only">etiqueta: </span>não passa</span></strong> nos requisitos mínimos do Selo de Usabilidade e Acessibilidade.</p>
+
+      <table class="table table-bordered">
+        <caption>Estado das avaliações efetuadas</caption>
+        <thead><tr><th>Tipo de avaliação</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr><td>Avaliação Automática</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></td></tr>
+          <tr><td>Avaliação Manual</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></td></tr>
+        </tbody>
+      </table>
+      <p>Das avaliações manuais efetuadas obtiveram-se os resultados que se sintetizam na tabela seguinte.</p>
+      <table class="table table-bordered">
+        <caption>Níveis de conformidade das avaliações manuais</caption>
+        <thead><tr><th>Checklist</th><th>Conformidade alcançada</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td>10 aspetos</td><td>44.0% (11/25)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+          <tr><td>Conteúdo</td><td>35.3% (6/17)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+          <tr><td>Transação</td><td>50.0% (5/10)</td><td><span class="status-nok"><span class="sr-only">etiqueta: </span>Não passa</span></td></tr>
+        </tbody>
+      </table>
+      <p><strong>Nota:</strong> para passar os requisitos do Selo é necessário alcançar um nível de conformidade superior ou igual a 75% em cada uma das 3 checklists.</p></section>
+
+    <section id="avaliacao-automatica" class="mb-5 report-section">
+      <h2>Avaliação automática</h2>
+      <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+      <p>Para a produção das evidências do presente capítulo, foram utilizadas ferramentas automatizadas de avaliação de requisitos de acessibilidade de acordo com a norma WCAG 2.1 'AA'. A amostra em análise pelas ferramentas é composta pela Homepage mais todas as páginas diretamente hiperligadas por ela, pertencentes ao domínio.</p>
+      
+      <p>Lista de evidências recolhidas:</p>
+      <ul class="evidence-list">
+            <li class="evidence-item">
+              <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/2" class="issue-link" target="_blank" rel="noopener noreferrer">issue #2</a> <strong>Avaliação Automática - Access Monitor / Observatório (em avaliação)</strong></p>
+              <div class="evidence-labels"><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span></div>
+              <div class="issue-content"><p>Analisámos a amostra com o Access Monitor, de acordo com o método Home+, tendo sido avaliadas, no total, <strong>10 páginas</strong>.</p>
+<p>Destas páginas, <strong>3 têm pontuação abaixo de 9</strong>: </p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a> | 8.3</li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores">https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores</a> | 8.6</li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a> | 8.7</li>
+</ul>
+<p>Para mais informação sobre os erros de acessibilidade que existem nessas páginas podem consultar o ficheiro .csv:<br><a href="https://github.com/user-attachments/files/27449673/06052026_bolsaestudolobos.csv">06052026_bolsaestudolobos.csv</a></p>
+<p>A correção desses erros fará aumentar a pontuação.</p>
+<p><strong>Nota: A atualização ainda não foi efetuada no ambiente de produção nem no Observatório, pelo que estes valores ainda não se encontram públicos.</strong></p>
+<img src="https://github.com/user-attachments/assets/90020b40-e74d-4c2f-aafa-29a319411749" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Indicadores e conformidade do sítio web</em></p>
+</div>
+            </li>
+            <li class="evidence-item">
+              <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/1" class="issue-link" target="_blank" rel="noopener noreferrer">issue #1</a> <strong>Existem erros de acessibilidade</strong></p>
+              <div class="evidence-labels"><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+              <div class="issue-content"><p>Efetuámos também uma análise com o validador Rocket Validator que indica a existência de 299 erros de Acessibilidade e que precisam ser corrigidos:</p>
+<img src="https://github.com/user-attachments/assets/20d9e992-ce2a-48cc-8c41-4ac6ef74076d" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Análise automática feita pelo Rocket Validator indica 299 erros de acessibilidade em uma amostra de 7 páginas</em></p>
+<p>Para mais informações partilhamos o <a href="https://rocketvalidator.com/s/f639835a-78bd-4470-ac43-a9d79c4797b0">relatório da análise automática feita pelo Rocket Validator</a>.</p>
+</div>
+            </li></ul></section>
+
+    <section id="avaliacao-manual" class="mb-5 mt-5 avaliacao-manual-section">
+      <h2>Avaliação manual</h2>
+      <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+      <p>A avaliação manual é feita por inspeção perícial dos diversos requisitos constantes da:</p>
+      <ul>
+        <li>checklist <strong>10 aspetos críticos de acessibilidade funcional</strong>;</li>
+        <li>checklist <strong>Conteúdo</strong> (se candidato a Selo Bronze);</li>
+        <li>checklist <strong>Transação</strong> (se candidato a Selo Prata).</li>
+      </ul>
+      <p>Sempre que os auditores localizam uma falha grave de um requisito de acessibilidade que, embora não faça parte do esquema de requisitos do Selo, se enquadre no âmbito das violações das WCAG 2.1 'AA' do W3C, tal referência é anotada em "Outras violações" do presente capítulo. Apesar destas violações não se apresentarem com carácter vinculativo no esquema de requisitos do Selo, recomenda-se que as mesmas sejam corrigidas.</p>
+      <div class="checklist-section">
+        <h3 id="checklist-10-aspetos">Checklist 10 aspetos</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist 10 aspetos</strong>: 44.0% (11/25)
+            <ul>
+              <li>Requisitos avaliados: 27 (2 N/A excluídos, 25 aplicáveis)</li>
+              <li>Requisitos OK: 11</li>
+              <li>Requisitos NOK: 14</li>
+              <li>Requisitos N/A: 2</li>
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-chk10-r-1.1">Requisito 1.1 - O menu de navegação deve estar estruturado como uma lista de opções</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/40" class="issue-link" target="_blank" rel="noopener noreferrer">issue #40</a> <strong>O menu principal não está estruturado como lista</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.1</span></div>
+                <div class="issue-content"><blockquote>
+<p>O menu de navegação deve estar estruturado como uma lista de opções. </p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n11">Ver requisito 1.1 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<p><strong>Evidencias</strong><br>As opções do menu principal estão agrupadas através de uma tag <code>div</code> genérica e não possuem semântica de uma lista:</p>
+<img src="https://github.com/user-attachments/assets/6ad1f06e-4f53-4f4f-91d9-fbbdb708ec40" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URls a verificar</strong><br>-<a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></p>
+<p><strong>Recomendações</strong></p>
+<ul>
+<li>As opções "Lobo Digital", "Informações", "Consultar" e "Candidatura" devem ser estruturadas dentro de uma lista não ordenada <code>ul</code> <code>li</code>.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-1.2">Requisito 1.2 - É possível selecionar as opções e as subopções do menu quer com rato quer com teclado</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/42" class="issue-link" target="_blank" rel="noopener noreferrer">issue #42</a> <strong>O menu principal não está estruturado como uma navegação</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível selecionar as opções e as subopções do menu quer com rato quer com teclado.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n12">Ver requisito 1.2 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<h3>Evidencias</h3>
+<p>Verifica-se que não está a ser utilizado a tag <code>nav</code> no menu. Ao utilizar o leitor de ecrã, não é possível realizar saltos diretamente para o menu, nem este é identificado como uma área de navegação:</p>
+<img src="https://github.com/user-attachments/assets/8653b168-c55b-4752-bb8c-99f7725529a6" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Menu mobile não está definido como navegação</em></p>
+<img src="https://github.com/user-attachments/assets/46b61c99-0225-4576-9614-e00435e73f14" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Menu desktop não está definido como navegação</em></p>
+<p><strong>URL</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a> - menu principal</li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Verificar o menu mobile e desktop.</li>
+<li>O menu deve ser estruturado dentro de uma tag nav.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/41" class="issue-link" target="_blank" rel="noopener noreferrer">issue #41</a> <strong>O menu mobile não está acessível para leitores de ecrã e teclado</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span></div>
+                <div class="issue-content"><blockquote>
+<p>É possível selecionar as opções e as subopções do menu quer com rato quer com teclado.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n12">Ver requisito 1.2 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<h3>Evidencias</h3>
+<p>Quando navegamos com o leitor de ecrã ou através do teclado, não é possível abrir o menu mobile. Isto ocorre porque o menu está estruturado como uma div, não sendo reconhecido como um elemento interativo não sendo acionável pelas tecnologias de apoio nem por teclado:</p>
+<img src="https://github.com/user-attachments/assets/11a9c40a-f9a6-4e40-adfd-9dbd1ece8f24" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URL</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a> - menu principal</li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Estruturar o menu como botão. O menu e o botão de fechar devem ser implementados como elementos <code>button</code>, garantindo que sejam reconhecidos como controlos interativos por teclado e leitores de ecrã.</li>
+<li>Gerir a abertura e fecho dos botões com  o atributo <code>aria‑expanded</code>. A lógica de abertura e fecho do menu deve ser controlada por script, atualizando corretamente o atributo <code>aria-expanded</code> para que as tecnologias de apoio identifiquem o estado atual do menu.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-1.3">Requisito 1.3 - As imagens-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/43" class="issue-link" target="_blank" rel="noopener noreferrer">issue #43</a> <strong>O menu principal não possui texto alternativo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><blockquote>
+<p>As imagem-link, caso existam no menu, devem ter o correspondente equivalente alternativo em texto.</p>
+<ul>
+<li><a href="https://amagovpt.github.io/kit-selo/checklists/checklist-10aspetos#n13">Ver requisito 1.3 da lista 10 aspetos</a></li>
+</ul>
+</blockquote>
+<h3>Evidencias</h3>
+<p>O menu principal e o botão de fechar estão sem texto alternativo. Isso faz com que ao navegar com o leitor de ecrã não seja possível identificar a sua função:</p>
+<img src="https://github.com/user-attachments/assets/bdc9ca83-ff38-4c1f-a6a5-8006c9810851" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URL</strong><br>-<a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a> - menu principal</p>
+<h3>Recomendações</h3>
+<ul>
+<li>Efetuarem as propostas de correção da issue xx</li>
+<li>Idealmente o nome acessível do botão pode ser fornecido através de um texto dentro do próprio botão. Esse texto deve estar presente para que, além do ícone, exista uma indicação visual clara de que se trata de um botão de menu. Por exemplo:</li>
+</ul>
+<img src="https://github.com/user-attachments/assets/f043d63e-c968-41ba-8521-daa805b33564" alt="Menu com texto visível" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>   Caso optem em esconder o texto visualmente, ele deve continuar acessível para tecnologias de apoio. Para mais informações partilhamos o  artigo <a href="https://www.acessibilidade.gov.pt/tutorial/css-em-accao-conteudo-invisivel-apenas-para-utilizadores-de-leitor-de-ecra/#page1_topic_2">Esconder Texto dos Utilizadores Que Usam o Sentido da Visão</a> do site acessibilidade.gov.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-2.1">Requisito 2.1 - Existe um título h1 marcado na página</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/9" class="issue-link" target="_blank" rel="noopener noreferrer">issue #9</a> <strong>Cabeçalho h1 genérico em todas as páginas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Actualmente, todas as páginas apresentam o mesmo <code>&lt;h1&gt;</code> ("Bolsas de Estudo Câmara Municipal de Câmara de Lobos"). O elemento <code>&lt;h1&gt;</code> deve ser atribuído ao título principal de cada página de forma a identificar de forma clara o respetivo conteúdo.</p>
+<img src="https://github.com/user-attachments/assets/f4721d2e-e0af-4319-b1fa-5242aed12811" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Exemplo do <code>&lt;h1&gt;</code> estar igual em todas as páginas .</em></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Garantir que existe um único elemento h1, correspondente ao título principal de cada página.</li>
+<li>Em todas as páginas o título principal está a ser atribuído como h2 sendo necessário alterar para h1. Devem garantir que essa alteração não gere problemas na hierarquia entre os cabeçalhos.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/8" class="issue-link" target="_blank" rel="noopener noreferrer">issue #8</a> <strong>Existência de múltiplos h1 na página web</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Cada página do website deve conter um único elemento <code>&lt;h1&gt;</code>, que represente o título principal do conteúdo. A utilização de múltiplos <code>&lt;h1&gt;</code> pode comprometer a interpretação da hierarquia da página por tecnologias de apoio.</p>
+<p>Na página de Declaração de Acessibilidade, verifica-se a existência de dois elementos <code>&lt;h1&gt;</code>, o que constitui uma utilização incorreta da estrutura de cabeçalhos.</p>
+<p>Esta duplicação poderá gerar problemas caso ambos os cabeçalhos h1 fiquem visíveis para os leitores de ecrã.</p>
+<img src="https://github.com/user-attachments/assets/80a711d2-9dbf-42a7-b38b-f1ad33076738" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Identificação de dois cabeçalhos marcados com <code>&lt;h1&gt;</code> na mesma página. .</em></p>
+<p><strong>URLs a verificar:</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/acessibilidade">https://bolsadeestudo.cm-camaradelobos.pt/acessibilidade</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Remover o título genérico "Bolsas de Estudo Câmara Municipal de Câmara de Lobos" da página de Declaração de Acessibilidade e Usabilidade.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-2.2">Requisito 2.2 - Existe uma marcação hierarquizada de títulos e subtítulos na página (h1...h6)</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/49" class="issue-link" target="_blank" rel="noopener noreferrer">issue #49</a> <strong>Cabeçalho partido em 2 tags</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.2</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Na homepage o cabeçalho "Bolsas de Estudo de Câmara de Lobos" está partido em 2 tags diferentes.</p>
+<img src="https://github.com/user-attachments/assets/b0720a0e-e8d5-4767-99c0-c8cf5db38905" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1-  Cabeçalhos partidos em 2 tags diferentes .</em></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Na homepage, não partir o título em h2 e h3 apenas para reduzir o tamanho do texto, usar font-size para alterar o tamanho e devem manter tudo no mesmo cabeçalho.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/35" class="issue-link" target="_blank" rel="noopener noreferrer">issue #35</a> <strong>Cabeçalhos no footer</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.2</span><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>No footer do website, a secção de "Contactos" está marcada como cabeçalho, no entanto as restantes secções estão marcadas com <code>&lt;div&gt;</code>.</p>
+<img src="https://github.com/user-attachments/assets/5fd1d783-9b75-4fa6-b914-7f621fb95ba0" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Secção do footer marcada como cabeçalho.</em></p>
+<h3>Recomendações</h3>
+<p>Aplicar uma das 2 soluções:</p>
+<ul>
+<li>Alterar a secção de contactos do footer para ficar igual às restantes (<code>&lt;div&gt;</code>)</li>
+<li>Alterar as restantes secções "Candidaturas", "Resultados", "Informações" and "Lobos Digital" para cabeçalhos.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-3.1">Requisito 3.1 - As células que constituem os cabeçalhos da tabela estão marcadas com o elemento th</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/38" class="issue-link" target="_blank" rel="noopener noreferrer">issue #38</a> <strong>Não foram encontradas tabelas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Não foram encontradas tabelas. tornando este critério N/A.</p>
+<h3>Recomendações</h3>
+<p>Nada a acrescentar.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-3.2">Requisito 3.2 - A legenda da tabela está marcada com o elemento caption</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/39" class="issue-link" target="_blank" rel="noopener noreferrer">issue #39</a> <strong>Não foram encontradas tabelas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Não foram encontradas tabelas. tornando este critério N/A.</p>
+<h3>Recomendações</h3>
+<p>Nada a acrescentar.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-4.2">Requisito 4.2 - É possível identificar os campos de preenchimento obrigatório quando se usa apenas um leitor de ecrã</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/76" class="issue-link" target="_blank" rel="noopener noreferrer">issue #76</a> <strong>Não é possível identificar campos obrigatórios nos formulários em PDF</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verificámos que, no formulário “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, não é possível reconhecer os campos de preenchimento obrigatório. Esta informação não é passada quer visualmente quer para os leitores de ecrã.</p>
+<img src="https://github.com/user-attachments/assets/b205c112-53c9-415e-b412-4cff4c76b78c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Análise do formulário “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, no browser através do leitor de ecrã NVDA.</em></p>
+<h3>Recomendações</h3>
+<p>Uma solução mais acessível seria disponibilizar os formulários diretamente no site, em vez de em formato PDF. Nos formulários web, os campos obrigatórios devem incluir o atributo <code>required</code> para serem identificados pelas tecnologias de apoio como obrigatórios. Adicionalmente, deve também ser apresentada uma indicação visual clara junto ao rótulo — por exemplo, “(Campo obrigatório)” — para que todos os utilizadores consigam identificar facilmente os campos que têm obrigatoriamente de preencher.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/75" class="issue-link" target="_blank" rel="noopener noreferrer">issue #75</a> <strong>Não há informação clara sobre o que é o asterisco nos campos de preenchimento obrigatório</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Os campos obrigatórios dos formulários devem estar devidamente identificados como tal. Idealmente, devem apresentar o texto “Obrigatório” à frente da legenda do campo. Pode-se colocar um <code>*</code> no campo obrigatório, desde que o significado do <code>*</code> seja mencionado no início do formulário.</p>
+<p>No formulário da página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a> não existe informação sobre o significado do asterisco nos campos.</p>
+<img src="https://github.com/user-attachments/assets/e2a59dce-d32b-43e5-929f-4ba004d2c955" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>formulário que não apresenta o significado do *</em></p>
+<h3>Recomendações</h3>
+<p>Recomendamos a revisão dos formulários por forma a adicionarem uma legenda no início do formulário que indique claramente o significado de <code>*</code>. Por exemplo, “* Campos de preenchimento obrigatório”.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/36" class="issue-link" target="_blank" rel="noopener noreferrer">issue #36</a> <strong>Identificação incorreta de campos obrigatórios em tecnologias de apoio</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Foi identificado que a marcação de campos obrigatórios no formulário inclui um elemento auxiliar com utilização incorreta de ARIA:</p>
+<ul>
+<li><code>&lt;span class="required" aria-required="true"&gt;*&lt;/span&gt;</code></li>
+</ul>
+<p>O atributo <code>aria-required="true"</code> encontra-se aplicado num elemento <code>&lt;span&gt;</code>, que não representa um controlo de formulário, não sendo suportado para este tipo de indicação semântica.</p>
+<p>Adicionalmente, os campos de formulário já incluem corretamente a indicação de obrigatoriedade através dos atributos:</p>
+<ul>
+<li><code>required</code></li>
+<li><code>aria-required="true"</code></li>
+</ul>
+<img src="https://github.com/user-attachments/assets/93ad934e-eb2a-4473-90b8-53badd66dffe" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Utilização incorreta do atributo <code>aria-required</code> num elemento não interativo (<code>span</code>) na indicação de campos obrigatórios</em></p>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>A indicação de campos obrigatórios deve ser feita exclusivamente nos elementos de formulário (input, select, textarea), garantindo que:<ul>
+<li>leitores de ecrã conseguem identificar corretamente campos obrigatórios;</li>
+<li>a semântica ARIA é utilizada de forma válida e consistente;</li>
+<li>não existem atributos ARIA aplicados em elementos não interativos;</li>
+<li>a informação de obrigatoriedade é transmitida de forma inequívoca.</li>
+</ul>
+</li>
+<li>A utilização de <code>aria-required</code> em elementos não de formulário pode gerar inconsistências na interpretação por tecnologias de apoio.</li>
+</ul>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Remover o atributo <code>aria-required="true"</code> do elemento <code>&lt;span class="required"&gt;</code>.</li>
+<li>Garantir que a indicação de obrigatoriedade é aplicada apenas nos campos de formulário (input, select, textarea).</li>
+<li>Manter o uso de <code>required</code> e <code>aria-required="true"</code> nos controlos de formulário, quando aplicável.</li>
+<li>Utilizar o símbolo visual (*) apenas como indicação visual, sem impacto semântico.</li>
+<li>Validar a estrutura com leitores de ecrã para garantir consistência na identificação de campos obrigatórios.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.1">Requisito 5.1 - A imagem ou gráfico tem um equivalente alternativo em texto curto e correto</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/57" class="issue-link" target="_blank" rel="noopener noreferrer">issue #57</a> <strong>Imagem não decorativa sem texto alternativo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verifica-se que o ícone de alerta é apresentado através de um elemento gráfico (svg) sem texto alternativo. Neste caso, o ícone assinala uma mensagem de aviso relativa ao estado da candidatura e deve ser anunciado aos utilizadores de tecnologias de apoio.</p>
+<img src="https://github.com/user-attachments/assets/63452c10-4b0f-43f2-bc23-4bb434a9a247" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URL:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/submissao-de-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/submissao-de-candidatura</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>As imagens não decorativas deverão ter uma descrição breve associada, nomeadamente através do uso do atributo descrevendo corretamente a imagem apresentada. Por exemplo, no ícone de alerta o texto alternativo poderá ser: aria-label="Alerta".</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/26" class="issue-link" target="_blank" rel="noopener noreferrer">issue #26</a> <strong>(Melhoria) Imagens decorativas com texto alternativo indevido</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verifica-se que algumas imagens funcionam apenas como apoio visual, encontrando-se a informação relevante já disponibilizada através de título, descrição e links acessíveis em texto. Nestes casos, as imagens podem ser tratadas como decorativas, devendo possuir alt="".</p>
+<img src="https://github.com/user-attachments/assets/ed4f723a-6b3c-409e-9113-ea925e093987" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+
+<img src="https://github.com/user-attachments/assets/a1bffa1c-6c02-4e43-aaf6-ebc347293e1a" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+
+<img src="https://github.com/user-attachments/assets/9def4ca2-65f4-460c-b725-7607b2336aac" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<hr>
+<p>Verificado que os ícones também funcionam apenas como apoio visual, uma vez que a sua finalidade já se encontra claramente identificada pelo texto visível associado. Nesses casos não devem possuir nome acessível através do atributo title. Adicionalmente, sendo o ícone em SVG meramente decorativo neste contexto, deve ser removido da árvore de acessibilidade através de aria-hidden="true".</p>
+<img src="https://github.com/user-attachments/assets/6436180b-82cf-46a9-8ce2-68a63328810a" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URL:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Recomenda-se que as imagens decorativas tenham alt="".</li>
+<li>Quando o SVG tiver apenas finalidade visual ou decorativa, deve ser removido da árvore de acessibilidade, por exemplo com aria-hidden="true". Remover o atributo title.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/25" class="issue-link" target="_blank" rel="noopener noreferrer">issue #25</a> <strong>Imagens decorativa com texto alternativo indevido</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verifica-se que o leitor de ecrã anuncia o banner da página inicial como imagem, apesar de este funcionar apenas como elemento visual decorativo. Neste contexto, o banner não acrescenta informação essencial distinta da que já se encontra disponível no conteúdo textual da página, pelo que não deve ser exposto autonomamente às tecnologias de apoio.</p>
+<img src="https://github.com/user-attachments/assets/478e2ea5-32a8-42fd-9001-55b47fc79db6" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+<p><strong>URL:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Recomenda-se que as imagens decorativas tenham alt="".</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.2">Requisito 5.2 - O gráfico é acompanhado de uma descrição longa</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/29" class="issue-link" target="_blank" rel="noopener noreferrer">issue #29</a> <strong>Imagem/gráfico não acessível para tecnologias de apoio</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>A imagem apresenta informação detalhada sobre vários percursos, mas o texto associado não contempla todas as informações nela contidas. Os links para mais informações também não disponibilizam o detalhe necessário sobre cada percurso, pelo que o conteúdo visual não está acessível de forma equivalente.</p>
+<img src="https://github.com/user-attachments/assets/d6bc555a-16a8-45c5-a216-4f55ff57cdaf" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+<p><strong>URL:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/848-semana-da-saude-e-bem-estar-2024">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/848-semana-da-saude-e-bem-estar-2024</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Recomenda-se que a informação representada na imagem seja disponibilizada no texto associado à imagem.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-5.3">Requisito 5.3 - As imagens-link têm um equivalente alternativo correto</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/24" class="issue-link" target="_blank" rel="noopener noreferrer">issue #24</a> <strong>Imagens link com texto alternativo incorreto</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verifica-se que a imagem do logótipo utilizada como link para a página inicial, apresenta um texto alternativo que não descreve adequadamente o seu propósito (acesso à página inicial).</p>
+<img src="https://github.com/user-attachments/assets/8b691bf0-ebcc-4a4c-aca0-53e7e4e15525" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<hr>
+<ul>
+<li>Imagem-link da galeria<br>Verifica-se que, embora o texto alternativo definido no atributo alt esteja correto, a presença simultânea de um aria-label faz com que o leitor de ecrã anuncie apenas este último, ignorando o alt. Como resultado, o texto alternativo deixa de ser efetivamente utilizado.</li>
+</ul>
+<img src="https://github.com/user-attachments/assets/3c7f3fb7-ac41-4a08-a77c-945f8b7d5af5" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<ul>
+<li>Imagem ampliada da galeria<br>A imagem ampliada deve apresentar o mesmo texto alternativo da imagem-link, garantindo consistência na identificação do conteúdo visual. No entanto, nesse caso, o alt não deve incluir a indicação “abrir galeria”, uma vez que a ação já foi executada e a imagem ampliada deve apenas descrever o conteúdo efetivamente apresentado.</li>
+</ul>
+<img src="https://github.com/user-attachments/assets/22f3b657-e3c8-4d31-80c1-ae3dc92908e9" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<hr>
+<p>Verifica-se que a imagem-link não apresenta um equivalente alternativo adequado. Embora a imagem possua atributo alt, o texto alternativo utilizado (“Support_Center”) corresponde a uma designação técnica e pouco natural, não comunicando de forma clara e acessível a função ou o destino do link.</p>
+<p>Adicionalmente, a informação mais descritiva encontra-se no atributo <code>title</code> (“Support Center - Bolsas Estudo”), o que não é adequado, uma vez que o <code>title</code> não deve ser usado como mecanismo principal para fornecer o nome acessível de uma imagem-link. O equivalente alternativo deve estar assegurado de forma robusta no próprio mecanismo acessível principal, através do <code>alt</code> da imagem ou do nome acessível do link.</p>
+<img src="https://github.com/user-attachments/assets/819adcba-8687-496e-84f5-3c52739b2925" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p>Também foi verificado que o link utiliza target="_blank", abrindo o destino num novo separador, esta informação não esta a ser comunicada de forma acessível ao utilizador. Nestes casos, o aviso de abertura em novo separador pode ser incluído no nome acessível do link. Por exemplo: <code>alt="Support Center - Bolsas Estudo (abre num novo separador)"</code></p>
+<img src="https://github.com/user-attachments/assets/a9710ad5-9ad0-40df-a22b-54b226256839" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+<p><strong>URL:</strong><br>(Ajustar em todas as galerias de imagens)<br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>O texto alternativo deve transmitir claramente o destino ou finalidade do link. Por exemplo: alt="Município de Câmara de Lobos – página inicial".</li>
+<li>As imagens-link deverão ter uma descrição breve associada, nomeadamente através do uso do atributo alt descrevendo corretamente a imagem apresentada, sem identificadores técnicos ou caracteres desnecessários.</li>
+<li>Quando o link direciona para um novo separador esta informação deve ser comunicada ao utilizador através do nome acessível da imagem.</li>
+<li>Nas imagens da Galeria: deve ser removido o atributo aria-label da imagem-link e integrada no atributo alt a indicação da ação disponível, isto é, que a imagem permite abrir a galeria.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-6.1">Requisito 6.1 - No corpo de um documento, o rácio de contraste entre a cor do texto normal (menor que 18 pontos ou menor que 14 pontos negrito) e a cor do fundo é superior a 4,5:1</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/69" class="issue-link" target="_blank" rel="noopener noreferrer">issue #69</a> <strong>Texto normal não tem contraste suficiente</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 6.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Notas gerais</strong></p>
+<ul>
+<li>O contraste no texto normal (menor que 18 pontos ou menor que 14 pontos negrito) das páginas deve ser, no mínimo 4,5:1, para que pessoas com baixa visão consigam ler o texto.</li>
+</ul>
+<p>A avaliação com a ferramenta <a href="https://vispero.com/color-contrast-checker/">Colour Contrast Analyser</a> revela problemas relacionados com insuficiência de contraste, afetando diretamente a legibilidade. </p>
+<p>O website apresenta problemas de contraste em formulários, por exemplo na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta de candidatura</a> com problemas de contraste nos textos das mensagens de erro com as combinação de cores #E73D4A(cor de primeiro plano) e #F6FAFE(cor de plano de fundo). (Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/4d9ae6d7-c776-4a60-86b3-4c4f18d63620" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Formulário com problemas de contraste nas mensagens de erro</em></p>
+<h3>Recomendações</h3>
+<p>Recomendamos a revisão das cores das páginas do website nas combinações de cores utilizadas em texto normal incluindo mensagens de erro, estados de foco e hover para garantir os valores mínimos de contraste.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-7.1">Requisito 7.1 - Deve ser possível ativar os botões de controlo do leitor quer com o rato quer com o teclado</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/71" class="issue-link" target="_blank" rel="noopener noreferrer">issue #71</a> <strong>Player não funcional no browser Safari</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 7.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>No browser Safari não foi possível visualizar o vídeo no link mencionado. O vídeo começa e imediatamente para, impossibilitando o utilizador de ver o vídeo.</p>
+<img src="https://github.com/user-attachments/assets/91647a83-0958-49b8-bde9-666a2b3d52c5" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Evidência de que não foi possível visualizar o video no Safari .</em></p>
+<p><strong>URLs a verificar:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Permitir a reprodução do player no browser Safari quando ativado pelo rato, teclado e leitores de ecrã.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/27" class="issue-link" target="_blank" rel="noopener noreferrer">issue #27</a> <strong>Controlos do player sem label</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 7.1</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Foi possível ativar os botões de controlo do leitor quer com o rato quer com o teclado, no entanto, existem alguns controlos no player sem label quando se usa o tab para navegar.</p>
+<img src="https://github.com/user-attachments/assets/487513da-c119-4976-88ae-111ed81f4737" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Evidência que foi possivel fazer play com o teclado .</em></p>
+<img src="https://github.com/user-attachments/assets/21a802a5-2ece-4b6f-a528-fe05c3937d80" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - Controlos no player, navegando com tab  .</em></p>
+<p><strong>URLs a verificar:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Remover os controlos sem label ou adicionar uma label descritiva nos mesmos.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-7.2">Requisito 7.2 - O vídeo ou o áudio deve conter preferencialmente legendas fechadas sincronizadas. Caso não seja possível, no mínimo, deve disponibilizar-se uma transcrição textual</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/28" class="issue-link" target="_blank" rel="noopener noreferrer">issue #28</a> <strong>Conteúdo visual sem audiodescrição</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 7.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Existem players multimédia sem legendas audiodescritivas. </p>
+<p>Para garantir acessibilidade, todos os conteúdos visuais essenciais devem ser acompanhados por audiodescrição ou por uma alternativa equivalente que permita compreender integralmente a informação transmitida no vídeo.</p>
+<img src="https://github.com/user-attachments/assets/63f552e6-9cf6-4008-8ad9-77d8beb53b39" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1: Imagem de player com contéudo visual sem legendas audiodescritivas .</em></p>
+<p><strong>URLs a verificar:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Incluir legendas audiodescritivas.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-8.2">Requisito 8.2 - Quando se retira a CSS, a informação aparece numa ordem lógica</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/10" class="issue-link" target="_blank" rel="noopener noreferrer">issue #10</a> <strong>Elementos ocultos e campos técnicos expostos sem função percetível</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.2</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>No formulário de consulta de candidatura foram identificados elementos técnicos e controlos ocultos presentes na estrutura da página sem função percetível para o utilizador.</p>
+<p>Foram observados:</p>
+<ul>
+<li>campos ocultos (input <code>type="hidden"</code>);</li>
+<li>uma área de ações (<code>form-actions</code>) definida com <code>display:none</code>;</li>
+<li>um botão de submissão oculto com texto técnico interno.</li>
+</ul>
+<p>Embora alguns destes elementos possam ser utilizados internamente pela aplicação, encontram-se presentes na estrutura do formulário sem contexto funcional claro para utilizadores ou tecnologias de apoio.</p>
+<p>Como consequência, a estrutura do formulário pode tornar-se confusa quando interpretada sem os estilos visuais aplicados ou através de tecnologias de apoio, dificultando a compreensão da lógica e fluxo da interação.</p>
+<img src="https://github.com/user-attachments/assets/93ee6d01-e99a-4582-966a-e677def386ca" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Elementos técnicos e ações ocultas expostos na estrutura do formulário</em></p>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Elementos presentes na estrutura do formulário devem possuir uma função clara e coerente no contexto da interação do utilizador.</li>
+<li>Componentes exclusivamente técnicos ou de suporte interno não devem introduzir ruído estrutural nem comprometer a compreensão semântica do formulário.</li>
+<li>A exposição de controlos ocultos ou identificadores técnicos pode dificultar a navegação e interpretação da interface por tecnologias de apoio.</li>
+</ul>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Rever a necessidade de exposição estrutural de campos e ações exclusivamente técnicas.</li>
+<li>Garantir que elementos ocultos não interferem com a compreensão semântica e lógica do formulário.</li>
+<li>Evitar a apresentação de identificadores técnicos ou controlos sem função percetível para o utilizador.</li>
+<li>Validar a experiência com tecnologias de apoio e com estilos desativados para confirmar que a estrutura permanece coerente e compreensível.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-8.3">Requisito 8.3 - Quando se retira a CSS, deve ser possível reconhecer a semântica dos diversos elementos</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/12" class="issue-link" target="_blank" rel="noopener noreferrer">issue #12</a> <strong>Controlo “Voltar atrás” apresentado sem semântica adequada e sem função clara</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>No formulário de consulta de candidatura foi identificado um elemento visualmente apresentado como controlo de navegação com o texto “Voltar atrás”.</p>
+<p>No entanto, o elemento encontra-se implementado através de um elemento genérico <code>&lt;div&gt;</code>, sem semântica nativa de botão ou link.</p>
+<p>Adicionalmente, no contexto observado, o controlo não aparenta possuir uma função clara ou necessária para o utilizador, uma vez que o formulário já se encontra na etapa principal de consulta, onde apenas é esperado o preenchimento dos dados e a ação “Consultar”.</p>
+<p>Como consequência, o utilizador pode interpretar o elemento como um controlo interativo sem compreender a sua finalidade, enquanto tecnologias de apoio podem não o anunciar corretamente como ação navegável.</p>
+<img src="https://github.com/user-attachments/assets/7a4ae681-37c2-44c1-b42f-fd448b165eac" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Controlo “Voltar atrás” implementado com elemento não semântico e sem função clara</em></p>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Elementos interativos devem utilizar componentes HTML semanticamente apropriados, como <code>&lt;button&gt;</code> ou <code>&lt;a&gt;</code>.</li>
+<li>A utilização de elementos genéricos como <code>&lt;div&gt;</code> para representar ações compromete a semântica da interface.</li>
+<li>Controlos expostos ao utilizador devem possuir uma função clara, compreensível e consistente com o contexto da página.</li>
+<li>A presença de elementos aparentando ser interativos sem necessidade funcional pode gerar confusão na navegação, sobretudo para utilizadores de tecnologias de apoio.</li>
+</ul>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Substituir o elemento <code>&lt;div&gt;</code> por um elemento semanticamente apropriado, caso o controlo tenha efetivamente uma função válida.</li>
+<li>Garantir que a ação executada pelo controlo é clara e necessária no contexto do formulário.</li>
+<li>Caso o elemento não possua utilidade funcional real, recomenda-se que não seja apresentado na interface.</li>
+<li>Validar o comportamento com navegação por teclado e leitores de ecrã para garantir que o controlo é corretamente anunciado e compreendido.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/11" class="issue-link" target="_blank" rel="noopener noreferrer">issue #11</a> <strong>Listagem de conteúdos sem estrutura semântica adequada</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 8.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Na página principal, têm várias secções em que cada item é apresentado como um conjunto de conteúdos relacionados (imagem, data, título, descrição e ligação para detalhe), estruturado com múltiplos elementos <code>&lt;div&gt;</code>.</p>
+<p>No entanto, estes itens não estão inseridos numa estrutura semântica de lista (<code>&lt;ul&gt;</code> / <code>&lt;li&gt;</code>), apesar de representarem claramente uma listagem de conteúdos homogéneos.</p>
+<img src="https://github.com/user-attachments/assets/bff1c37b-d962-4892-be42-c274edfea1cc" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Listagem de eventos estruturada com elementos <code>&lt;div&gt;</code> sem utilização de lista semântica</em></p>
+<p>Como consequência, as tecnologias de apoio não conseguem identificar programaticamente que estes elementos pertencem a um conjunto, nem o número total de itens existentes.</p>
+<p>Quando os estilos CSS são desativados, os conteúdos passam a ser apresentados como blocos isolados, sem indicação clara da relação entre si, dificultando a compreensão da estrutura da informação.</p>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Conjuntos de conteúdos relacionados, como listagens de documentos, notícias ou resultados, devem ser estruturados com elementos HTML semânticos apropriados (ex.: listas <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> e <code>&lt;li&gt;</code>), de forma a permitir que tecnologias de apoio identifiquem corretamente o agrupamento e o número de itens.</li>
+<li>A utilização exclusiva de elementos genéricos (<code>&lt;div&gt;</code>) para representar estes conjuntos pode comprometer a perceção da relação entre os conteúdos apresentados.</li>
+</ul>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Deve ser verificado este padrão em todo o website.</li>
+<li>Os conjuntos de conteúdos que representem listagens (ex.: documentos, notícias, resultados) devem ser estruturados semanticamente como listas (<code>&lt;ul&gt;</code> ou <code>&lt;ol&gt;</code>), com cada item representado por um <code>&lt;li&gt;</code>.</li>
+<li>Cada item da lista deve agrupar toda a informação relacionada (categoria, título, descrição e ações) dentro do respetivo <code>&lt;li&gt;</code>.</li>
+<li>Evitar a utilização exclusiva de elementos genéricos (<code>&lt;div&gt;</code>) para representar agrupamentos de conteúdos.</li>
+<li>Validar com leitores de ecrã para garantir que o agrupamento e o número de itens são corretamente anunciados.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-9.4">Requisito 9.4 - Quando a caixa de diálogo fecha, o foco (cursor do Browser) deve voltar ao elemento interativo que a invocou</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/33" class="issue-link" target="_blank" rel="noopener noreferrer">issue #33</a> <strong>Quando a caixa de diálogo fecha, o foco não volta ao elemento interativo que o invocou</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 9.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verifica-se que, ao navegar com o leitor de ecrã utilizando os controles VO + espaço (Voice Over) ou VO + Tab, ao fechar a galeria o foco não regressa ao elemento que a acionou. Isso acontece quando efetuamos a abertura da galeria de imagens e navegamos pelo conteúdo antes de fechar.</p>
+<img src="https://github.com/user-attachments/assets/0ef673f4-5300-4e65-8dee-04b2f47f1ca9" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URL:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Recomenda-se que ao fechar a modal, o foco seja devolvido ao elemento que a acionou.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-chk10-r-10.1">Requisito 10.1 - Nos ficheiros PDF é possível, no mínimo, extrair o conteúdo textual para formato TXT</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/44" class="issue-link" target="_blank" rel="noopener noreferrer">issue #44</a> <strong> Ficheiros PDF apresentados em um domínIo diferente do domínio do website institucional</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 10.1</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk 10 web</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Nos PDFs avaliados foi possível extrair o conteúdo textual para formato TXT, no entanto, verifica-se que vários ficheiros PDF disponibilizados no website da Câmara Municipal de Lobos redirecionam para o domínio balcaomunicipal.cm. Recomenda-se que esses documentos sejam disponibilizados, no mesmo domínio do website institucional, de forma a garantir maior coerência na navegação e consistência na apresentação da informação.</p>
+<img src="https://github.com/user-attachments/assets/8da94125-b8d7-454e-b6a1-37b3f010783a" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URLs a verificar:</strong></p>
+<p><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a> - <a href="https://balcaomunicipal.cm-camaradelobos.pt/templates/viewer/js/pdfjsv2/web/viewer.html?file=https%3A%2F%2Fbalcaomunicipal.cm-camaradelobos.pt%2Fdocumentos%2Fdlunq%2F%3Frefid%3Diq2yya7dn88c4wg00g0c%26cname%3Da896e47f64232fe7132125d976b2bf55579dd709e7d04265b5e0c031c238cfb9bd0d7648ab22b2fb2efefefc02b3d4b20aa09cd46cfcd2c38f916a03d016b0f4&amp;n2e=nclnk">Link para o PDF</a></p>
+<h3>Recomendações</h3>
+<ul>
+<li>Recomenda-se que os ficheiros atualmente alojados no domínio balcaomunicipal.cm sejam migrados ou disponibilizados diretamente no mesmo domínio do website institucional da Câmara Municipal de Lobos.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="checklist-conteudo">Checklist Conteúdo</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist Conteúdo</strong>: 35.3% (6/17)
+            <ul>
+              <li>Requisitos avaliados: 17 (17 aplicáveis)</li>
+              <li>Requisitos OK: 6</li>
+              <li>Requisitos NOK: 11</li>
+              
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-conteudo-r-1.2">Requisito 1.2 - Os termos mais complexos têm uma definição agregada</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/23" class="issue-link" target="_blank" rel="noopener noreferrer">issue #23</a> <strong>Falta de glossário para termos complexos</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Ao longo do website, é possível identificar a utilização de diversos termos técnicos e complexos que surgem sem qualquer definição ou explicação associada. Na ausência de um glossário ou de mecanismos que permitam esclarecer esses conceitos, os utilizadores podem ter dificuldade em compreender plenamente a informação apresentada, especialmente aqueles que não estão familiarizados com a terminologia utilizada.</p>
+<img src="https://github.com/user-attachments/assets/d674fc1d-7756-4fcd-b6b5-74e663fd363d" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Imagem com o termo complexo "EB1/PE" sem definição agregada. Disponível em: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/980-visita-do-presidente-a-eb1pe-do-jardim-da-serra">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/980-visita-do-presidente-a-eb1pe-do-jardim-da-serra</a></em></p>
+<img src="https://github.com/user-attachments/assets/53f10938-c25a-431d-9db5-0d68ddc74153" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Imagem com o termo complexo "EAPN" sem definição agregada. Disponível em: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/978-ii-forum-mobilidade-global-integracao-e-diversidade-cultural">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/978-ii-forum-mobilidade-global-integracao-e-diversidade-cultural</a></em></p>
+<p>Outros exemplos:</p>
+<ul>
+<li>EB1/PE: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/976-entrega-de-amendoas-e-ovos-de-chocolate-aos-alunos-da-eb1pe-e-creche-do-jardim-da-serra">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/976-entrega-de-amendoas-e-ovos-de-chocolate-aos-alunos-da-eb1pe-e-creche-do-jardim-da-serra</a></li>
+<li>CREE: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/975-camara-municipal-marcou-presenca-no-seminario-construir-futuros-intervir-com-proposito">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/975-camara-municipal-marcou-presenca-no-seminario-construir-futuros-intervir-com-proposito</a></li>
+<li>Eb1/pe: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/971-exposicao-integrada-no-programa-ecoescolas">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/971-exposicao-integrada-no-programa-ecoescolas</a></li>
+<li>INFOCUS: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/968-formacoes-modulares-certificadas-100-financiadas-em-camara-de-lobos-com-estagio-incluido-20260303141306">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/968-formacoes-modulares-certificadas-100-financiadas-em-camara-de-lobos-com-estagio-incluido-20260303141306</a></li>
+<li>Erasmus+ KA121-SCH: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/967-grupo-de-alunos-e-professores-da-eslovaquia-erasmus-ka121sch">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/967-grupo-de-alunos-e-professores-da-eslovaquia-erasmus-ka121sch</a></li>
+</ul>
+<h3>Recomendações</h3>
+<p>Recomenda-se a criação de um glossário que permita a utilização consistente de siglas ao longo do website, evitando que o utilizador tenha de procurar repetidamente a sua definição noutros parágrafos.</p>
+<p>Como exemplo podem visualizar o glossario do <a href="https://www.acessibilidade.gov.pt/glossario/">acessibilidade.gov</a>. </p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-1.3">Requisito 1.3 - Cada bloco de conteúdo contém a sua data de atualização</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/22" class="issue-link" target="_blank" rel="noopener noreferrer">issue #22</a> <strong>Falta de datas de atualização em blocos de conteúdo</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.3</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Não foi possível identificar datas de atualização em certos blocos de conteúdo analisados. Considerando que as informações relativas às associações são relevantes e exigem credibilidade, é fundamental que todos os conteúdos apresentem uma data de atualização visível, de forma a reforçar a confiança, a transparência e a fiabilidade da informação disponibilizada.</p>
+<p>A falta dessas referências compromete a perceção de atualidade e fiabilidade da informação disponibilizada, tornando mais difícil para o utilizador avaliar se os conteúdos e contactos apresentados continuam válidos. A inclusão de datas de atualização, especialmente em páginas institucionais e informativas, é um elemento fundamental para reforçar a transparência, a credibilidade e a confiança na informação fornecida.</p>
+<img src="https://github.com/user-attachments/assets/ab87391e-e1ec-446f-bd3f-45a1e71e0e87" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Imagem de bloco de conteúdo sem uma data de atualização. Disponível em: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores">https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores</a></em></p>
+<h3>Recomendações</h3>
+<ul>
+<li><p>Incluir a data de publicação e/ou última atualização em todos os conteúdos relevantes;</p>
+</li>
+<li><p>Garantir que essa informação está semanticamente estruturada;</p>
+</li>
+<li><p>Assegurar consistência na apresentação das datas em todo o site.</p>
+</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-2.1">Requisito 2.1 - O tipo de letra do corpo do documento é adequado e o tamanho da letra é, no mínimo, de 12 pontos</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/46" class="issue-link" target="_blank" rel="noopener noreferrer">issue #46</a> <strong>O conteúdo do site fica desformatado em resoluções mais pequenas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Todos os conteúdos do site devem ser responsivos para garantir a sua legibilidade na maioria das resoluções e quando são escalados para tamanhos superiores.</li>
+</ul>
+<p>O <a href="https://bolsadeestudo.cm-camaradelobos.pt/">website</a> apresenta inconsistências na variação dos tamanhos de letra em resoluções mais reduzidas. Com a navegação verificou‑se que, ao alterar a resolução para um formato mobile, o texto de botões do menu principal ficam desformatado e com uma dimensão inferior à recomendada, comprometendo a legibilidade. (Figura 1 e 2)</p>
+<img src="https://github.com/user-attachments/assets/a46629ce-01d8-4f25-8ccd-880891d3645b" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Botões do menu principal apresentam tamanho de letra variável com apenas 14px</em></p>
+<img src="https://github.com/user-attachments/assets/b98995da-adf2-4c16-aa73-ede8c94f95e0" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 -  Verificação do texto de links na secção “Notícias Educação” com texto variável e tamanho de letra de apenas 12px</em> </p>
+<p>Além disso, nas páginas interiores das notícias, o corpo de texto também sofre alterações com o tamanho de letra de apenas 14px. (Figura 3)</p>
+<img src="https://github.com/user-attachments/assets/641dfa9f-19c5-4015-8638-6d8fd716e0dd" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 3 - Corpo de texto da página com tamanho de letra variável em dispositivos móveis</em></p>
+<p>Outras páginas (NOK) e com tamanho de fonte variável em dispositivos móveis:  </p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a></li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a></li>
+</ul>
+<h3>Recomendações</h3>
+<p>É necessário a revisão em todo website. Para correção das páginas adaptadas de modo a assegurar que o conteúdo se reorganiza corretamente e permanece totalmente utilizável em diferentes resoluções, tamanhos e orientações de ecrã, sem perda de informação ou funcionalidade.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/45" class="issue-link" target="_blank" rel="noopener noreferrer">issue #45</a> <strong>O corpo de texto tem um tamanho inferior a 12pt (equivalente a 16px)</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Para garantir a legibilidade do corpo de texto, este deve ter um tamanho igual ou superior a 12pt, que equivale a 16px.</li>
+</ul>
+<p>O <a href="https://associativismo.cm-camaradelobos.pt/">website</a> possui informações primárias com tamanho inferior a 12pontos(16px), como o menu “Lobos Digital” (disponível em todas as páginas do website) possui opções com tamanho de letra inferior ao recomendado, por exemplo a opção “Agenda Câmara de Lobos” com apenas 14px(Figura 1) </p>
+<img src="https://github.com/user-attachments/assets/e5e2e54d-293e-4c98-9fe8-3496e6d20bc3" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Verificação do tamanho do texto nas opções do menu com apenas 14px</em></p>
+<p>Há botões de ação principal com tamanho de texto inferior ao recomendado. Por exemplo o botão “Limpar Filtro” na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">Notícias e Destaques</a> com tamanho de letra de apenas 15px. (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/a3bf1e16-65be-4214-8f8e-d84aff41c1e2" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2- Verificação do tamanho de texto em botão “Limpar Filtro” com apenas 15px</em></p>
+<p>O formulário de <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta de candidatura</a> possui * para indicar campos obrigatórios que não são visíveis com o tamanho de letra de apenas 12px, associados aos campos de preenchimento obrigatório são consideradas informação primária, mas apresentam um tamanho inferior ao recomendado. Além disso, o botão “Voltar atrás” também não cumpre o presente requisito.  (Figura 3) </p>
+<img src="https://github.com/user-attachments/assets/9c83d0e2-fd55-4d04-b26a-c2b6229a657c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 3- Informações primárias do formulário com dimensão inferior ao recomendado</em> </p>
+<p>No rodapé, a hiperligação para o Suporte Center (“AQUI”) é considerada informação primária, uma vez que constitui um elemento de navegação relevante para os utilizadores. Contudo, apresenta um tamanho de letra inferior ao recomendado e compromete a legibilidade.</p>
+<img src="https://github.com/user-attachments/assets/1d452f58-1c5f-41b0-b8f8-d0a99a76fac7" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 4- Verificação do texto do rodapé com informação primária sem o valor mínimo recomendado</em></p>
+<h3>Recomendações</h3>
+<p>É necessário ser corrigido os textos de informações primárias, para um tamanho igual ou superior ao recomendado.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-2.3">Requisito 2.3 - Blocos e linhas de texto com largura não superior a 100 caracteres</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/48" class="issue-link" target="_blank" rel="noopener noreferrer">issue #48</a> <strong>Existem blocos de textos com mais de 100 caracteres por linha</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Para assegurar uma boa leitura, as linhas de texto devem ter até 80 caracteres (incluindo espaços). No limite, podem ir até aos 100 caracteres (incluindo espaços).</li>
+</ul>
+<p>Verificámos que no website há blocos de textos apresentam largura superior ao recomendado por linha. Por exemplo na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos">Apresentação do livro infantil “A Macaronésia Trocada por Miúdos” </a>(Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/54d377dd-0c30-4e4e-84cc-f4c28d538309" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Análise de bloco de texto com ferramenta <a href="https://wordcounter.net/">WordCounter</a> com 170 caracteres</em></p>
+<p>Outras evidências (NOK)</p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a> - (113 caracteres) </li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/987-espetaculo-sons-em-familia-historias-cantadas-na-biblioteca-municipal">Espetáculo “Sons em Família - Histórias Cantadas” na Biblioteca Municipal</a> (167 caracteres) </li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">Iniciativa “Vamos Falar de Livros - 12”</a> - (170 caracteres) </li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/acessibilidade">Declaração de Acessibilidade </a> - (165 caracteres)</li>
+</ul>
+<h3>Recomendações</h3>
+<p>Revisar blocos de textos para garantir que não é ultrapassado o número máximo de caracteres por linha. Recomendamos que seja definida uma largura máxima para as caixas de texto (<em>max-width</em>, em CSS), com unidades relativas ao tamanho de fonte (unidades <em>em</em> ou <em>rem</em>).</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-2.4">Requisito 2.4 - O espaçamento entre linhas não é inferior a 1.5x o tamanho da letra</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/50" class="issue-link" target="_blank" rel="noopener noreferrer">issue #50</a> <strong>O espaçamento entre linhas está abaixo do recomendado</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Notas gerais</strong></p>
+<ul>
+<li>Para assegurar uma boa leitura, o espaçamento entre linhas não deve ser inferior a 1.5x em relação ao tamanho do texto a ser analisado.</li>
+</ul>
+<p><strong>Evidência 01</strong><br>Na <a href="https://bolsadeestudo.cm-camaradelobos.pt/">página inicial</a>, há diversos blocos de texto com espaçamento inferior ao recomendado. Por exemplo, no banner, a secção “Notícias Educação” com espaçamento de 20px para um tamanho de letra de 20px. (Figura 1)  </p>
+<img src="https://github.com/user-attachments/assets/f6a6560f-23c6-45ba-825e-b8a2e20cf3c7" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Textos com espaçamento inferior ao recomendado</em></p>
+<p>Outra evidência de espaçamento incorreto:</p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a></li>
+</ul>
+<p> </p>
+<h3>Recomendações</h3>
+<p>Para a evidência 01 apresentada, o espaçamento deveria ser, no mínimo 30px. É necessário rever todo website para garantir o espaçamento mínimo recomendado, relativo ao tamanho da letra. Além disso, como sugestão de melhoria para manter a consistência dos blocos de texto do website, recomendamos organizar o texto com alinhamento à esquerda.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-3.3">Requisito 3.3 - As hiperligações de texto não devem ser diferenciadas apenas com base na cor</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/63" class="issue-link" target="_blank" rel="noopener noreferrer">issue #63</a> <strong>As hiperligações não são consistentes ao longo do website</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>As hiperligações devem apresentar uma representação visual claramente distinta do texto envolvente, recorrendo a indicadores complementares como sublinhado, contraste adequado, alteração de cor consistente ou outros elementos visuais identificáveis. Essa diferenciação deve manter-se consistente ao longo de todas as páginas do website e entre diferentes browsers, garantindo previsibilidade e reconhecimento imediato por parte dos utilizadores.</p>
+<p>Adicionalmente, o texto meramente informativo não deve possuir características visuais semelhantes às utilizadas nas hiperligações, evitando ambiguidades na interpretação dos elementos interativos.</p>
+<p>Atualmente, existem conteúdos no website cuja apresentação visual é semelhante à das hiperligações, o que pode induzir os utilizadores em erro, levando-os a interpretar texto estático como clicável ou, inversamente, a considerar determinadas hiperligações como simples texto informativo. Esta inconsistência compromete a perceção da navegabilidade e a identificação correta de elementos interativos.</p>
+<img src="https://github.com/user-attachments/assets/5092950c-5f27-4634-82a7-58ab9c5ce8f2" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Imagem de texto informativo mas que aparenta com hiperligação.</em></p>
+<p>Outros exemplos:</p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores">https://bolsadeestudo.cm-camaradelobos.pt/menu/resultados-anteriores</a></li>
+</ul>
+<h3>Recomendações</h3>
+<p>Garantir consistência da cor e forma entre todas as hiperligações e texto informativo ao longo do website e entre os diferentes browsers.</p>
+<p>Todas as hiperligações do website devem manter um estilo visual consistente, garantindo uniformidade na sua apresentação e reconhecimento ao longo de toda a navegação. O padrão atualmente utilizado nas hiperligações da página de <a href="https://bolsadeestudo.cm-camaradelobos.pt/acessibilidade?utm_source=chatgpt.com">Acessibilidade</a> deve ser adotado de forma transversal em todas as páginas do website.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/60" class="issue-link" target="_blank" rel="noopener noreferrer">issue #60</a> <strong>Falta de identificação complementar nas hiperligações</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Foi identificado um problema de acessibilidade relacionado com a identificação visual de links no website. Atualmente, existem situações em que os links não estão devidamente diferenciados do texto normal, sendo identificáveis apenas através da cor ou de interação (hover), o que não cumpre as boas práticas de acessibilidade. Segue em seguida alguns exemplos encontrados:</p>
+<img src="https://github.com/user-attachments/assets/a9fdafcd-575a-46c9-9b0d-a735f1cc4b77" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 01: Imagem do título das notícias na página inicial como hiperligação sem identificação visual complementar.</em></p>
+<img src="https://github.com/user-attachments/assets/15fa5477-09f6-4005-b963-ef288e2faa77" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 02: Imagem das hiperligações no rodapé sem identificação visual complementar.</em></p>
+<p>As hiperligações presentes no rodapé devem possuir uma identificação visual complementar, como sublinhado, para que os utilizadores consigam reconhecer de forma clara que os elementos são clicáveis.</p>
+<p>Atualmente, o link “Aqui”, presente no Support Center do rodapé (Ver figura 02), funciona como hiperligação, mas não apresenta diferenciação visual suficiente em relação ao texto informativo envolvente. Esta ausência de indicação visual dificulta a perceção da sua funcionalidade e pode comprometer a navegação, sobretudo para utilizadores com limitações cognitivas, baixa visão ou dificuldades de perceção visual.</p>
+<p>Outros exemplos:</p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a></li>
+<li>Os breadcrumbs dentro de cada notícia, como por exemplo: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li><p>Sejam visualmente distinguíveis do texto normal sem depender exclusivamente da cor;</p>
+</li>
+<li><p>Incluam sublinhado ou outro indicador visual consistente;</p>
+</li>
+<li><p>Mantenham consistência em todos os estados (normal, hover, focus).</p>
+</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-4.1">Requisito 4.1 - Os documentos longos têm um índice no topo com hiperligações internas para o mesmo</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/13" class="issue-link" target="_blank" rel="noopener noreferrer">issue #13</a> <strong>Utilização de cartazes com dimensões excessivas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/987-espetaculo-sons-em-familia-historias-cantadas-na-biblioteca-municipal">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/987-espetaculo-sons-em-familia-historias-cantadas-na-biblioteca-municipal</a></p>
+<p>A imagem de apresentação da notícia é apresentada com uma dimensão excessiva, ocupando mais de um ecrã completo em determinadas resoluções.<br>Esta situação obriga a um uso prolongado de scroll e dificulta a navegação contínua do conteúdo da página.</p>
+<img src="https://github.com/user-attachments/assets/1cc7c9ee-a089-41fb-8939-f1c5c95b2997" alt="Imagem de apresentação da notícia com dimensão excessiva" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Imagem de apresentação da notícia com dimensão superior à área visível do ecrã.</strong></p>
+
+<p><strong>Outros exemplos:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/984-associacao-de-doencas-neuromusculoesqueleticas-adnmeram">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/984-associacao-de-doencas-neuromusculoesqueleticas-adnmeram</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/968-formacoes-modulares-certificadas-100-financiadas-em-camara-de-lobos-com-estagio-incluido-20260303141306">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/968-formacoes-modulares-certificadas-100-financiadas-em-camara-de-lobos-com-estagio-incluido-20260303141306</a></p>
+<h3>Recomendações</h3>
+<p>A imagem de apresentação deve ser ajustada para uma dimensão mais proporcional ao conteúdo da página, evitando ocupar uma área excessiva do ecrã.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-4.2">Requisito 4.2 - O layout do sítio Web é adaptável a plataformas móveis sem necessidade de efetuar varrimento horizontal</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/14" class="issue-link" target="_blank" rel="noopener noreferrer">issue #14</a> <strong>Inconsistências de adaptação responsiva e apresentação de conteúdos em dispositivos móveis</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></p>
+<p>O menu inferior do rodapé, contendo as opções “Candidaturas”, “Resultados”, “Consultar”, “Informações” e “Lobos Digital”, deixa de ser apresentado em algumas versões mobile da plataforma.</p>
+<p>Esta diferença entre desktop e mobile cria inconsistências na navegação e dificulta o acesso a conteúdos relevantes em dispositivos móveis.</p>
+<img src="https://github.com/user-attachments/assets/723b0f24-e855-4157-a107-a91a64f00068" alt="Rodapé ausente em algumas versões mobile da plataforma" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Rodapé não apresentado em determinadas versões mobile da plataforma.</strong></p>
+
+<p><strong>Ponto 02</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos</a></p>
+<p>Em algumas resoluções mobile, determinados elementos da página não se adaptam bem à largura do ecrã, originando corte parcial do conteúdo apresentado.</p>
+<img src="https://github.com/user-attachments/assets/c23a93a8-fdf7-4a50-9d2e-a9f3ecfdf69c" alt="Conteúdo parcialmente cortado devido a adaptação incorreta em dispositivos móveis" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 02 — Conteúdo da página parcialmente cortado em ecrãs de menor dimensão.</strong></p>
+
+<p><strong>Outros exemplos:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/979-dia-nacional-do-ar">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/979-dia-nacional-do-ar</a><br><a href="http://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/976-entrega-de-amendoas-e-ovos-de-chocolate-aos-alunos-da-eb1pe-e-creche-do-jardim-da-serra">http://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/976-entrega-de-amendoas-e-ovos-de-chocolate-aos-alunos-da-eb1pe-e-creche-do-jardim-da-serra</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/967-grupo-de-alunos-e-professores-da-eslovaquia-erasmus-ka121sch">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/967-grupo-de-alunos-e-professores-da-eslovaquia-erasmus-ka121sch</a></p>
+<p><strong>Ponto 03</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/959-camara-municipal-aprovou-o-orcamento-para-2026-no-valor-de-339-milhoes-de-euros">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/959-camara-municipal-aprovou-o-orcamento-para-2026-no-valor-de-339-milhoes-de-euros</a></p>
+<p>Em algumas resoluções mobile, o breadcrumb apresenta-se demasiado próximo das margens da página, reduzindo o espaçamento visual do componente relativamente ao conteúdo envolvente.</p>
+<img src="https://github.com/user-attachments/assets/38fd8b23-2ba4-42a2-9dd0-3efbb0e767ae" alt="Breadcrumb apresentado com espaçamento reduzido em resolução mobile" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 03 — Breadcrumb apresentado com espaçamento reduzido em resolução mobile.</strong></p>
+
+<p><strong>Outro exemplo:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/957-camara-de-lobos-aprovou-o-orcamento-municipal-para-2026-20260303142400">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/957-camara-de-lobos-aprovou-o-orcamento-municipal-para-2026-20260303142400</a></p>
+<h3>Recomendações</h3>
+<p>Os conteúdos e componentes da plataforma devem adaptar-se corretamente a diferentes resoluções e dispositivos móveis, garantindo uma navegação consistente, sem cortes de conteúdo e com espaçamentos adequados entre os elementos da interface.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.1">Requisito 5.1 - Não existem elementos interativos acionados apenas com a passagem do rato (hover)</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/15" class="issue-link" target="_blank" rel="noopener noreferrer">issue #15</a> <strong> - Elementos interativos dependentes de interação por hover para visualização</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></p>
+<p>Foi identificado um elemento interativo no rodapé do conteúdo que apenas se torna visível quando o utilizador passa o rato sobre a área correspondente. Este comportamento impede o acesso à funcionalidade em dispositivos sem interação por hover, como dispositivos móveis ou navegação por teclado.</p>
+<img src="https://github.com/user-attachments/assets/a9ac2198-c72d-43a4-a15b-6d84ac4282ab" alt="Elemento interativo dependente de hover para visualização" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Elemento interativo apenas visível através de interação por hover.</strong></p>
+
+
+<h3>Recomendações</h3>
+<p>Os elementos interativos devem permanecer visíveis independentemente da interação por hover, garantindo o acesso às funcionalidades em dispositivos móveis, navegação por teclado e restantes formas de interação.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.2">Requisito 5.2 - Os elementos interativos têm uma dimensão mínima de 44px CSS (44 pontos) (vertical e horizontal)</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/19" class="issue-link" target="_blank" rel="noopener noreferrer">issue #19</a> <strong>Elementos interativos com área clicável inferior à dimensão mínima recomendada</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/">https://bolsadeestudo.cm-camaradelobos.pt/</a></p>
+<p>Os botões “Informações”, “Consultar” e “Candidatura” apresentam uma área interativa inadequada, com apenas 18.89px de altura, ficando abaixo do mínimo recomendado de 44×44px para componentes acionáveis, o que compromete a sua usabilidade e acessibilidade.</p>
+<img src="https://github.com/user-attachments/assets/47938a08-fad8-4af2-86f0-f72dc4eabdab" alt="Botões com área interativa visualmente reduzida" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Botões com dimensão visual inferior à área interativa mínima recomendada.</strong></p>
+
+<p><strong>Ponto 02</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a></p>
+<p>Os elementos interativos da paginação apresentam uma área clicável reduzida relativamente ao tamanho mínimo recomendado para componentes acionáve</p>
+<img src="https://github.com/user-attachments/assets/902dc6f2-0f82-468f-92a6-09dfc3bd010d" alt="Elementos de paginação com área interativa reduzida" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Elementos de paginação com área clicável inferior à dimensão mínima recomendada.</strong></p>
+
+<h3>Recomendações</h3>
+<p>Os elementos interativos da plataforma devem apresentar uma área clicável adequada ao tamanho mínimo recomendado de 44×44px, garantindo uma interação mais confortável e facilitando a navegação em diferentes dispositivos.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.3">Requisito 5.3 - Há apenas um botão de ação principal por página e o mesmo encontra-se destacado</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/16" class="issue-link" target="_blank" rel="noopener noreferrer">issue #16</a> <strong>Hierarquia visual insuficiente entre ações principais e elementos informativos</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></p>
+<p>O botão “Consultar”, apesar de ser a principal ação da página, apresenta o mesmo estilo visual dos restantes botões da plataforma, não existindo um destaque claro relativamente às ações secundárias.</p>
+<img src="https://github.com/user-attachments/assets/99b3a0d4-237b-4a5a-ab1f-b2a544013c32" alt="Botão principal sem destaque visual relativamente às restantes ações" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Ação principal sem diferenciação visual clara relativamente às ações secundárias.</strong></p>
+
+<p><strong>Ponto 02</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques</a></p>
+<p>Verificou-se que o botão secundário “Voltar atrás” não possui destaque visual suficiente enquanto botão relativamente ao conteúdo envolvente.</p>
+<p>Foi ainda identificado que o botão “Limpar filtro”, presente no formulário de pesquisa por filtros, não apresenta destaque claro enquanto ação principal do formulário.</p>
+<img src="https://github.com/user-attachments/assets/7d84f54f-0483-4ea7-aabd-77e575733265" alt="Botões com destaque visual insuficiente relativamente ao contexto apresentado" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 02 — Botões “Voltar atrás” e “Limpar filtro” com destaque visual insuficiente relativamente ao conteúdo envolvente.</strong></p>
+
+<h3>Recomendações</h3>
+<p>A principal ação da página deve apresentar maior destaque visual relativamente às restantes ações secundárias, permitindo a sua identificação de forma mais rápida e intuitiva pelos utilizadores.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-conteudo-r-5.4">Requisito 5.4 - Elementos gráficos interativos têm de aparentar ser clicáveis</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/17" class="issue-link" target="_blank" rel="noopener noreferrer">issue #17</a> <strong>Elementos interativos sem diferenciação visual clara ou comportamento consistente de interação</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 5.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p><strong>Ponto 01</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></p>
+<p>O elemento “Voltar atrás” encontra-se clicável, contudo é apresentado visualmente como texto simples, sem qualquer indicação clara de interatividade, como alteração no hover, cursor de ação ou destaque visual.</p>
+<img src="https://github.com/user-attachments/assets/ad2a2c49-4402-4d89-bb2b-e9c1cc36bac6" alt="Elemento Voltar atrás sem identificação visual evidente de interatividade" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 01 — Elemento acionável apresentado visualmente como texto simples.</strong></p>
+
+<p><strong>Ponto 02</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo</a></p>
+<p>Na secção onde é apresentada a indicação “Para tal, basta clicar no comando abaixo para aceder ao canal e identificar qual o problema.”, a imagem apresentada abaixo funciona como elemento clicável, contudo a mesma aparenta ser apenas uma imagem informativa.<br>A imagem não apresenta qualquer indicação visual de interatividade, como alteração no hover, cursor de ação ou outro destaque visual que permita perceber que pode ser selecionada. Além disso, a relação entre o texto apresentado e a imagem não é suficientemente evidente, podendo fazer com que alguns utilizadores não identifiquem que a ação deve ser realizada através da imagem.</p>
+<img src="https://github.com/user-attachments/assets/2512ed1a-de12-4cf2-8714-955174ec15bf" alt="Imagem clicável sem indicação visual evidente de interatividade" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 02 — Imagem utilizada como ação clicável sem indicadores visuais claros de interatividade.</strong></p>
+
+<p><strong>Ponto 03</strong><br>Página: <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/987-espetaculo-sons-em-familia-historias-cantadas-na-biblioteca-municipal">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/987-espetaculo-sons-em-familia-historias-cantadas-na-biblioteca-municipal</a></p>
+<p>As imagens apresentadas na secção de galeria encontram-se clicáveis, contudo não apresentam indicação visual de interatividade. Durante a interação com rato não existe alteração visual, cursor de ação ou outro destaque que permita perceber que as imagens podem ser selecionadas.</p>
+<img src="https://github.com/user-attachments/assets/5f596c3d-38c0-4f08-9e8d-b87ffd37deb8" alt="Imagens da galeria sem indicação visual de interatividade" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+<p><strong>Figura 03 — Imagens clicáveis sem indicadores visuais claros de interatividade.</strong><strong>Outros exemplos:</strong><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/986-apresentacao-do-livro-infantil-a-macaronesia-trocada-por-miudos</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/984-associacao-de-doencas-neuromusculoesqueleticas-adnmeram">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/984-associacao-de-doencas-neuromusculoesqueleticas-adnmeram</a><br><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a></p>
+<h3>Recomendações</h3>
+<p>Os elementos clicáveis devem apresentar indicadores visuais claros de interatividade, permitindo que os utilizadores consigam identificar facilmente as ações disponíveis e os componentes acionáveis da interface.</p>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="checklist-transacao">Checklist Transação</h3>
+        <p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+        
+      <p><strong>Nível de conformidade:</strong></p>
+        <ul>
+          <li><strong>Checklist Transação</strong>: 50.0% (5/10)
+            <ul>
+              <li>Requisitos avaliados: 13 (3 N/A excluídos, 10 aplicáveis)</li>
+              <li>Requisitos OK: 5</li>
+              <li>Requisitos NOK: 5</li>
+              <li>Requisitos N/A: 3</li>
+            </ul>
+          </li>
+        </ul>
+    
+        <h4 class="requirement-title" id="req-transacao-r-1.1">Requisito 1.1 - A sequência de tabulação entre campos segue a sequência de preenchimento</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/52" class="issue-link" target="_blank" rel="noopener noreferrer">issue #52</a> <strong>Não é possível aceder ao conteúdo do ficheiro PDF através de navegação por teclado (Tab e Shift+Tab)</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Testámos o ficheiro PDF “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, através do browser e do Adobe Acrobat Reader, e não é possível aceder de forma acessível ao conteúdo deste documento através de navegação por teclado (Tab e Shift+Tab).</p>
+<img src="https://github.com/user-attachments/assets/8b240c8b-bbf2-45c4-a761-9aef579201bf" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Análise do ficheiro PDF “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, através do leitor de ecrã NVDA no Adobe Acrobat Reader.</em></p>
+<h3>Recomendações</h3>
+<p>Uma solução mais acessível seria disponibilizar os formulários PDF diretamente no site, em vez de em formato PDF.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/51" class="issue-link" target="_blank" rel="noopener noreferrer">issue #51</a> <strong>Há componentes do formulário que são ignorados quando se navega por teclado</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Ao navegar pelo formulário com o teclado usando a tecla Tab, a sequência de tabulação deve seguir a ordem de preenchimento, passando por todos os campos disponíveis. </p>
+<p>Verificámos que, na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a>, ao navegar por teclado (Tab e Shift+Tab), não é possível focar no componente “Voltar atrás” - cuja função é a de limpar o conteúdo já inserido nos campos do formulário.</p>
+<img src="https://github.com/user-attachments/assets/c985e3f1-1b53-4db2-8b03-74d0f5a8cd1b" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Análise do componente "Voltar atrás", no formulário da página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a>, através do Google Inspector.</em></p>
+<h3>Recomendações</h3>
+<p>Recomendamos que a <code>&lt;div&gt;</code> dentro da qual se encontra este elemento (<code>&lt;div class="voltarAtras" style="display: block;"&gt;Voltar atrás&lt;/div&gt;</code>) seja substituída pelo elemento HTML nativo semântico <code>&lt;button&gt;</code>.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-1.2">Requisito 1.2 - Os formulários com mais de 2 ecrãs de altura devem ser distribuídos por várias páginas</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/53" class="issue-link" target="_blank" rel="noopener noreferrer">issue #53</a> <strong>Formulários PDF inacessíveis para leitores de ecrã</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>O formulário PDF “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, é um formulário cujo conteúdo está distribuído por 2 páginas.</p>
+<p>No entanto, como estes formulários PDF não são acessíveis, os utilizadores que dependem de leitores de ecrã não conseguem aceder devidamente ao seu conteúdo.</p>
+<img src="https://github.com/user-attachments/assets/35fe89c1-0508-4ccc-86a2-773648ec0f4f" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Análise do formulário PDF “Declaração sob compromisso de honra” presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>.</em></p>
+<h3>Recomendações</h3>
+<p>Nos casos dos formulários PDF, uma solução mais acessível seria disponibilizar os formulários diretamente no site, em vez de em formato PDF.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-1.3">Requisito 1.3 - Os formulários com mais de uma página têm a sequência de passos ilustrada</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/54" class="issue-link" target="_blank" rel="noopener noreferrer">issue #54</a> <strong>Há formulários PDF com mais de uma página que não têm a sequência de passos identificada</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 1.3</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Em formulários com mais de uma página, deve-se garantir que está identificada a sequência de passos, juntamente com a designação de cada passo.</p>
+<p>O formulário “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, é um formulário que está distribuído por 2 páginas e que não tem a sequência de passos identificada. Para além disso, não é possível navegar e aceder devidamente ao conteúdo do ficheiro através do leitor de ecrã.</p>
+<img src="https://github.com/user-attachments/assets/a66f8ade-9a91-4e42-9546-c51ab8bff8e4" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Formulário em formato PDF “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>.</em></p>
+<h3>Recomendações</h3>
+<p>Para garantir melhor acessibilidade, os formulários não devem ser disponibilizados em PDF. A solução mais inclusiva é apresentar os formulários diretamente no site, permitindo o seu preenchimento online. </p>
+<p>Nos formulários extensos, com mais de uma página, a estrutura deve ser revista para incluir uma sequência de passos claramente identificada.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.1">Requisito 2.1 - O tamanho dos campos deve refletir o tamanho previsível dos dados</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/55" class="issue-link" target="_blank" rel="noopener noreferrer">issue #55</a> <strong>O tamanho dos campos não reflete o tamanho previsível dos dados</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.1</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verificámos que na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a>, os campos “Indique o NIF/NIPC que utilizou para submeter a candidatura” e “Indique o email que utilizou para submeter a candidatura”, os campos são demasiado largos para a informação a inserir.</p>
+<p>O NIF (Número de Identificação Fiscal) e o NIPC (Número de Identificação de Pessoa Coletiva) são dados constituídos por 9 dígitos. Por outro lado, o tamanho esperado de um email também é relativamente curto, entre 30 a 40 caracteres, em média.</p>
+<img src="https://github.com/user-attachments/assets/467cc48a-966f-468e-80bf-f3bf0ff37f18" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Formulário da página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a>.</em></p>
+<h3>Recomendações</h3>
+<p>Recomendamos a revisão dos campos dos formulários de forma a garantir que os campos de input tenham uma largura proporcional ao tipo de informação a inserir.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.2">Requisito 2.2 - É usada revelação progressiva em vez de campos inativos</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/56" class="issue-link" target="_blank" rel="noopener noreferrer">issue #56</a> <strong>Não foram identificados formulários que utilizem revelação progressiva</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.2</span><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>No <a href="https://bolsadeestudo.cm-camaradelobos.pt/">Portal da Bolsa de Estudo de Câmara de Lobos</a>, não foram encontrados campos cujo conteúdo dependente seja ocultado ou revelado automaticamente com base na ativação de um campo chave. Assim, o requisito 2.2. da Checklist de Transação é avaliado como “Não aplicável”.</p>
+<h3>Recomendações</h3>
+<p><em>No response</em></p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-2.4">Requisito 2.4 - Campos obrigatórios devem ser claramente indicados como tal</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/66" class="issue-link" target="_blank" rel="noopener noreferrer">issue #66</a> <strong>Não é possível identificar campos obrigatórios nos formulários em PDF</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Verificámos que, no formulário “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, não é possível reconhecer os campos de preenchimento obrigatório. Esta informação não é passada quer visualmente quer para os leitores de ecrã.</p>
+<img src="https://github.com/user-attachments/assets/b205c112-53c9-415e-b412-4cff4c76b78c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura - Análise do formulário “Declaração sob compromisso de honra”, presente na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/informacoes/bolsas-de-estudo">Bolsa de Estudo</a>, no browser através do leitor de ecrã NVDA.</em></p>
+<h3>Recomendações</h3>
+<p>Uma solução mais acessível seria disponibilizar os formulários diretamente no site, em vez de em formato PDF. Nos formulários web, os campos obrigatórios devem incluir o atributo <code>required</code> para serem identificados pelas tecnologias de apoio como obrigatórios. Adicionalmente, deve também ser apresentada uma indicação visual clara junto ao rótulo — por exemplo, “(Campo obrigatório)” — para que todos os utilizadores consigam identificar facilmente os campos que têm obrigatoriamente de preencher.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/65" class="issue-link" target="_blank" rel="noopener noreferrer">issue #65</a> <strong>Não há informação clara sobre o que é o asterisco nos campos de preenchimento obrigatório</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 2.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Os campos obrigatórios dos formulários devem estar devidamente identificados como tal. Idealmente, devem apresentar o texto “Obrigatório” à frente da legenda do campo. Pode-se colocar um <code>*</code> no campo obrigatório, desde que o significado do <code>*</code> seja mencionado no início do formulário.</p>
+<p>No formulário da página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta Candidatura</a> não existe informação sobre o significado do asterisco nos campos.</p>
+<img src="https://github.com/user-attachments/assets/e2a59dce-d32b-43e5-929f-4ba004d2c955" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+
+<h3>Recomendações</h3>
+<p>Recomendamos a revisão dos formulários por forma a adicionarem uma legenda no início do formulário que indique claramente o significado de <code>*</code>. Por exemplo, “* Campos de preenchimento obrigatório”.</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-3.1">Requisito 3.1 - Em ações longas, o sistema deve indicar o que está a acontecer</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/3" class="issue-link" target="_blank" rel="noopener noreferrer">issue #3</a> <strong>Inexistência de ações longas</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.1</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Na análise realizada, não foram identificadas ações longas que exijam comunicação de estado ao utilizador.</p>
+<p>Desta forma, considera-se que o critério é não aplicável.</p>
+<h3>Recomendações</h3>
+<p>N/A</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-3.2">Requisito 3.2 - Deve ser confirmado o sucesso da transação/envio de informação</h4>
+<div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 1 melhoria que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/4" class="issue-link" target="_blank" rel="noopener noreferrer">issue #4</a> <strong>Feedback após submissão não acessível</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 3.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Após submissão do formulário:</p>
+<ul>
+<li>A mensagem de feedback não é anunciada por leitores de ecrã</li>
+<li>Não existe uso de <code>aria-live</code>, <code>role="alert"</code> ou <code>role="status"</code></li>
+<li>O foco não é movido para a mensagem</li>
+<li>A mensagem não é alcançável por navegação por teclado</li>
+<li>O utilizador pode permanecer no formulário sem perceber que a ação foi concluída</li>
+</ul>
+<p>Este comportamento compromete a compreensão do estado da interface.</p>
+<img src="https://github.com/user-attachments/assets/286ff786-4eaf-4241-aa45-649a81bc8199" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Mensagem de feedback não anunciada nem acessível por teclado</em></p>
+<p><strong>Notas Gerais</strong></p>
+<ul>
+<li>Sempre que o utilizador realiza uma ação (ex.: submissão de um formulário), o sistema deve fornecer um retorno claro e imediato sobre o resultado dessa ação. Esse feedback deve ser perceptível visualmente e também programaticamente acessível, garantindo que utilizadores de tecnologias de apoio são informados da alteração de estado.</li>
+</ul>
+<p><strong>URL a verificar</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura</a></li>
+</ul>
+<h3>Recomendações</h3>
+<ul>
+<li>Garantir que todas as ações apresentam feedback claro e acessível</li>
+<li>Utilizar <code>aria-live="polite"</code> ou <code>role="status"</code> para mensagens dinâmicas</li>
+<li>Mover o foco para a mensagem de sucesso/erro após submissão</li>
+<li>Assegurar que o feedback é navegável por teclado</li>
+<li>Garantir que mensagens são visíveis e persistentes</li>
+<li>Validar com leitores de ecrã e navegação por teclado</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-4.2">Requisito 4.2 - As ações destrutivas nunca devem ser permanentes; deve ser sempre possível desfazer a operação</h4>
+<div class="requirement-content">
+<p><span class="status-na"><span class="sr-only">etiqueta: </span>N/A</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/62" class="issue-link" target="_blank" rel="noopener noreferrer">issue #62</a> <strong>Não existem formulários que permitam ações destrutivas pelo utilizador</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.2</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>Não identificamos formulários que permitem o utilizador fazer ações destrutivas e por esse motivo, consideramos esse critério como "Não aplicável".</p>
+<h3>Recomendações</h3>
+<p>N/A</p>
+</div>
+              </li></ul>
+</div>
+<h4 class="requirement-title" id="req-transacao-r-4.4">Requisito 4.4 - As mensagens de erro devem mostrar os passos concretos para a resolução dos mesmos</h4>
+<div class="requirement-content">
+<p><span class="status-nok"><span class="sr-only">etiqueta: </span>NOK</span></p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/72" class="issue-link" target="_blank" rel="noopener noreferrer">issue #72</a> <strong>Existem mensagens de erro que não ajudam na resolução do problema</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span><span class="label-tag label-requisito"><span class="sr-only">etiqueta: </span>R 4.4</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<p>A mensagem de erro “Por favor, introduza um endereço eletrónico válido” presente no formulário <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/consulta-candidatura">Consulta de candidatura</a> não ajuda no preenchimento do campo:</p>
+<img src="https://github.com/user-attachments/assets/b61c0709-5480-44af-af6e-9003042f2190" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Mensagem de erro que não guia o utilizador na resolução do erro</em><br>Como observado na figura, a mensagem “Por favor, introduza um endereço eletrónico válido” que é apresentada quando o campo foi preenchido com um formato incorreto não indica qual o formato a ser inserido, não ajudando a preencher o campo.</p>
+<h3>Recomendações</h3>
+<p>Recomendamos rever todos os formulários do website para garantir que as mensagens de erro apresentadas expliquem para o utilizador como preencher os campos corretamente.</p>
+</div>
+              </li></ul>
+</div>
+
+      </div>
+      <div class="checklist-section">
+        <h3 id="outras-violacoes">Outras violações</h3>
+        <div class="requirement-content">
+<p><span class="status-ok"><span class="sr-only">etiqueta: </span>OK</span> (no entanto contém 6 melhorias que se recomenda efetuar)</p>
+<p>Lista de evidências recolhidas:</p>
+<ul class="evidence-list">
+
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/79" class="issue-link" target="_blank" rel="noopener noreferrer">issue #79</a> <strong>Outras violações - Foco não está visível na navegação por teclado e leitor de ecrã</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<h4><strong>Descrição da problemática</strong></h4>
+<p>Ao navegar pelo <a href="https://bolsadeestudo.cm-camaradelobos.pt/">website</a> utilizando o teclado ou leitor de ecrã, nem sempre o indicador de foco se encontra visível, dificultando significativamente a navegação, em particular para utilizadores que dependem exclusivamente deste meio de interação.</p>
+<p>Durante a navegação sequencial através da tecla TAB, em alguns momentos o foco não é apresentado de forma perceptível, sendo apenas possível inferir a sua existência através da barra de estado do navegador, o que não constitui uma solução acessível nem adequada. Por exemplo, na página inicial em botões do header, nos cards das “Notícias Educação”(Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/4d0421af-e000-4669-9861-9adcc3824f4c" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Exemplo de ausência de foco visível na navegação por teclado</em></p>
+<p>O problema se repete em páginas interiores e em todo website, por exemplo na página <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques">Notícias e Destaques</a> há componentes que não são circunscritas pelo foco. (Figura 2)</p>
+<img src="https://github.com/user-attachments/assets/ae6ea572-8cf2-4183-bb71-6ca90c040182" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 – Exemplo de foco visível mas não circunscreve corretamente a componente</em></p>
+<p>Sendo assim não é possível identificar visualmente a posição do utilizador em cada momento da navegação. Esta situação pode levar o utilizador a perder a noção da sua posição na página, comprometendo a usabilidade e a acessibilidade do website.</p>
+<h3>Recomendações</h3>
+<p>Garantir que todos os elementos interativos do website apresentam um indicador de foco visível, suficientemente contrastante e consistente, sempre que recebem foco através da navegação por teclado.<br>O estilo de foco deverá:</p>
+<ul>
+<li>Ser claramente percetível visualmente (ex.: contorno, sublinhado ou mudança de cor);</li>
+<li>Manter contraste adequado em relação ao fundo;</li>
+<li>Não ser removido através de regras CSS como outline: none sem alternativa equivalente;</li>
+<li>Acompanhar corretamente a ordem lógica da navegação por teclado.</li>
+</ul>
+<p>Esta melhoria é essencial para assegurar uma navegação acessível a utilizadores com deficiência visual, motora ou cognitiva</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/78" class="issue-link" target="_blank" rel="noopener noreferrer">issue #78</a> <strong>Outras violações - Botão com texto alternativo em inglês</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<h4><strong>Descrição da problemática</strong></h4>
+<p>Verificamos uma inconsistência linguística, uma vez que o site está em português mas há botões com o textos alternativos em inglês.<br> <br>O <a href="https://bolsadeestudo.cm-camaradelobos.pt/">website</a> possui nas notícias interiores nas galerias de imagens, que possuem botões em inglês, com <code>alt="Previous"</code> e <code>&nbsp;alt="Next"</code>, dificultando a compreensão para utilizadores do idioma português, língua em que o site é implementado. (Figura 1 e 2) </p>
+<img src="https://github.com/user-attachments/assets/e4a3c3c2-1c38-45cf-9b45-c2a4ad1ad7eb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 - Setas interativas em inglês impacta na experiência com leitor de ecrã NVDA</em></p>
+<img src="https://github.com/user-attachments/assets/f47e891e-36b3-4e27-be5f-61057f17ebff" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 2 - Verificação do texto alternativo das setas interativas</em></p>
+<p>Outros exemplos: </p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/981-camara-municipal-de-camara-de-lobos-foi-distinguida-com-a-bandeira-de-merito-social-2026">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/981-camara-municipal-de-camara-de-lobos-foi-distinguida-com-a-bandeira-de-merito-social-2026</a></li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/983-erasmus-vrampar-classroom-transformers</a></li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/985-iniciativa-vamos-falar-de-livros-12</a></li>
+</ul>
+<h3>Recomendações</h3>
+<p>Recomendamos traduzir todos os textos alternativos dos botões para português, idioma principal do website.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/77" class="issue-link" target="_blank" rel="noopener noreferrer">issue #77</a> <strong>Outras violações - Existência de elementos fora de landmarks semânticos</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><h3>Evidências</h3>
+<h4><strong>Descrição da problemática</strong></h4>
+<p>Verificou‑se a presença de elementos interativos fora de landmarks semânticos, encontrando‑se diretamente “soltos” no elemento <code>&lt;body&gt;</code>, nomeadamente o menu principal que não está inserido em um <code>&lt;header&gt;</code>, o rodapé que não está no atributo <code>&lt;footer&gt;</code>. (Figura 1)</p>
+<img src="https://github.com/user-attachments/assets/649b9f44-3cfb-44b8-a674-6f5cd6488af6" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><em>Figura 1 – Website estruturado apenas com atributo <code>&lt;section&gt;</code> no <code>&lt;body&gt;</code></em></p>
+<p>A inexistência de enquadramento destes elementos em regiões semânticas apropriadas (por exemplo, <code>&lt;header&gt;, &lt;main&gt;, &lt;nav&gt;, &lt;aside&gt; ou &lt;footer&gt;</code>) compromete a sua deteção e interpretação por tecnologias de apoio. Em consequência, leitores de ecrã e a navegação por teclado podem não percorrer nem anunciar estes elementos, impossibilitando o acesso por parte de utilizadores com deficiência visual ou motora.</p>
+<p>Esta situação cria uma barreira significativa à acessibilidade, uma vez que funcionalidades essenciais ficam inacessíveis a determinados perfis de utilizadores, contrariando os princípios de perceção, operabilidade e robustez.</p>
+<h3>Recomendações</h3>
+<p>Garantir que todos os elementos interativos do website estejam corretamente integrados em landmarks semânticos apropriados, de acordo com a sua função e localização lógica na página.</p>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/74" class="issue-link" target="_blank" rel="noopener noreferrer">issue #74</a> <strong>Outras violações - Links e botões que direcionam para PDFs sem aviso prévio</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><p>Verifica‑se que existem páginas que apresentam botões e links que direcionam diretamente para ficheiros PDF, sem informar previamente o utilizador sobre esse comportamento.</p>
+<p>Por exemplo, na página inicial do website <a href="https://bolsadeestudo.cm-camaradelobos.pt/">Bolsas de Estudo de Câmara de Lobos</a>, os links de “Regulamento” e os que estão sendo apresentados em "Documentos" abrem diretamente um ficheiro PDF, mas não é possível identificar esse comportamento pelo nome do link, o que compromete a previsibilidade e a identificação:</p>
+<img src="https://github.com/user-attachments/assets/507b2094-a2a0-4c44-bfee-851575a05654" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Não é perceptível que o link Regulamento é um ficheiro PDF</em></p>
+<img src="https://github.com/user-attachments/assets/a6bc031d-e639-497c-b212-97d27d16e8cb" alt="Image" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+<p><em>Não é perceptível que os links de alteração e declaração são ficheiros PDF</em></p>
+<p><strong>Recomendação</strong></p>
+<ul>
+<li>Ajustar as nomenclaturas dos links e botões para informar claramente que o acionamento irá abrir ou descarregar um ficheiro PDF, por exemplo: “Regulamento (PDF)”.</li>
+<li>Adicionalmente, recomenda-se manter o comportamento consistente em todo o site.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/70" class="issue-link" target="_blank" rel="noopener noreferrer">issue #70</a> <strong>Outras violações - Imagem duplicada na mesma página</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><p>Na página da notícia <a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/964-camara-municipal-de-camara-de-lobos-vai-atribuir-apoios-a-infancia-a-236-familias-do-concelho">Câmara Municipal de Câmara de Lobos vai atribuir apoios à infância a 236 famílias do concelho</a> está sendo apresentado duas imagens. Contudo, elas são idênticas e possuem o mesmo texto alternativo:</p>
+<img src="https://github.com/user-attachments/assets/fddb100b-dd17-492b-a2bd-19d339e93bcb" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+
+
+<img src="https://github.com/user-attachments/assets/e72c09a5-48cc-41e1-baad-e019130f758e" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>URLs</strong></p>
+<ul>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/953-camara-de-lobos-juntase-a-causa-do-dia-mundial-do-cancro-do-pancreas">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/953-camara-de-lobos-juntase-a-causa-do-dia-mundial-do-cancro-do-pancreas</a></li>
+<li><a href="https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/941-candidatura-as-bolsas-de-estudo-para-estudantes-do-ensino-superior-ja-se-encontra-disponivel-em-formato-exclusivamente-online-20260303144112">https://bolsadeestudo.cm-camaradelobos.pt/menu/noticias-e-destaques/noticia/941-candidatura-as-bolsas-de-estudo-para-estudantes-do-ensino-superior-ja-se-encontra-disponivel-em-formato-exclusivamente-online-20260303144112</a></li>
+</ul>
+<p><strong>Recomendação</strong></p>
+<ul>
+<li>Remover a imagem duplicada para evitar redundância desnecessária.</li>
+<li>Definir a imagem como decorativa quando não acrescenta informação relevante ao conteúdo. Nesse caso, o texto alternativo deve ser nulo (<code>alt=""</code>), evitando excesso de informação para utilizadores de leitores de ecrã.</li>
+</ul>
+</div>
+              </li>
+              <li class="evidence-item">
+                <p><span class="visually-hidden">evidência: </span><a href="https://github.com/a11y-PT/report_064/issues/61" class="issue-link" target="_blank" rel="noopener noreferrer">issue #61</a> <strong>Outras violações - Link de saltar para conteúdo principal</strong></p>
+                <div class="evidence-labels"><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span></div>
+                <div class="issue-content"><p>Verifica-se que o website possui o link “Ir para conteúdo”, cuja finalidade é permitir aos utilizadores contornar blocos repetitivos de navegação e aceder diretamente à área principal do conteúdo.</p>
+<p>No entanto, este link apresenta problemas:</p>
+<ul>
+<li>Não é apresentado de forma visível quando está em foco.</li>
+<li>Quando selecionamos o link com o leitor de ecrã, está sendo direcionado para o h1 ao invés do conteúdo principal main.</li>
+</ul>
+<img src="https://github.com/user-attachments/assets/1887759e-3e91-4f51-8051-8dd6e52ab72c" alt="" class="evidence-image" style="max-width: 100%; height: auto; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px;">
+
+
+
+<p><strong>Recomendações</strong></p>
+<ul>
+<li>O link deve ser visualmente perceptível, apresentando-se como um elemento interativo (link ou botão). Devem garantir que o contraste esteja acima do recomendado.</li>
+<li>Idealmente ele deveria estar sempre visível no ecrã, no entanto, pode ser visível apenas quando recebe foco por teclado ou leitor de ecrã.</li>
+<li>Estruturalmente deve ser posicionado no início da página como o primeiro elemento interativo.<br>O atributo href do link deve conter o id do respectivo main da página.</li>
+</ul>
+</div>
+              </li></ul>
+</div>
+
+      </div></section>
+
+    <section id="etiquetas" class="mb-5 report-section">
+      <h2>Significado das etiquetas utilizadas</h2>
+      <ul>
+        <li><span class="label-tag label-ok"><span class="sr-only">etiqueta: </span>OK</span> - status OK</li>
+        <li><span class="label-tag label-melhoria"><span class="sr-only">etiqueta: </span>melhoria</span> - status OK, mas pode melhorar</li>
+        <li><span class="label-tag label-nok"><span class="sr-only">etiqueta: </span>NOK</span> - status Not OK</li>
+        <li><span class="label-tag label-na"><span class="sr-only">etiqueta: </span>N/A</span> - status Não Aplicável</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk10 web</span> - checklist 10 Aspetos críticos de acessibilidade funcional</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk conteúdo</span> - checklist Conteúdo</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>chk transação</span> - checklist Transação</li>
+        <li><span class="label-tag label-outras"><span class="sr-only">etiqueta: </span>outras violações</span> - permite construir o subcapítulo "Outras violações", o qual integra o capítulo "Avaliações manuais"</li>
+        <li><span class="label-tag label-declaracao"><span class="sr-only">etiqueta: </span>dec a11y</span> - permite construir o capítulo "Declaração de acessibilidade e usabilidade"</li>
+        <li><span class="label-tag label-auto"><span class="sr-only">etiqueta: </span>av auto</span> - permite construir o capítulo "Avaliação automática"</li>
+        <li><span class="label-tag label-checklist"><span class="sr-only">etiqueta: </span>testes usabilidade</span> - permite construir o capítulo "Testes de usabilidade"</li>
+      </ul>
+    </section>
+
+  </div>
+  <footer class="report-footer">
+    <p>© 2026 ARTE - Agência para a Reforma Tecnológica do Estado, I.P. Todos os Direitos Reservados.</p>
+    <p><em lang="en">GitReports v1.0</em> - relatório gerado automaticamente a partir dos <em lang="en">issues</em> do GitHub</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
